@@ -5,7 +5,7 @@
     align-items: center;
     background-repeat: no-repeat;
     gap: 2rem;
-    margin: 0rem 5rem;
+    margin: 1rem 5rem;
 }
 
 #contact-top {
@@ -23,25 +23,32 @@
 }
 
 #contact-info {
-    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    background-color: var(--color4);
-    height: 50rem;
-    padding: 0rem 5rem;
+    width: 40%;
+    height: 40rem;
+    padding-left: 5rem;
+}
+
+#contact-info img {
+    width: 70%;
+    z-index: 1;
+    object-fit: contain;
+    margin-bottom: 1rem;
 }
 
 #get-in-touch {
     padding: 0rem 5rem;
     width: 60%;
-    background-color: var(--color4);
+    border: 1px solid var(--color1);
+    box-shadow: rgba(49, 190, 255, 0.35) 4px 4px 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: flex-start;
-    height: 50rem;
+    height: 40rem;
 }
 
 .title {
@@ -108,24 +115,74 @@
 
 #map-iframe {
     height: 500px;
-    width:94%;
+    width: 94%;
     border: none;
 }
 
-/* Media query for screens with a max width of 360 pixels */
-@media (max-width: 1315px) {
+
+@media (max-width: 1111px) {
     #main {
-        flex-direction: column;
-        height: auto;
-        margin: 0rem 5rem;
+        margin: 0rem 1rem;
         gap: 1rem;
     }
 
-    #contact-info, #get-in-touch {
+    #get-in-touch {
+        padding: 0 1rem;
+
+        margin: 1rem 0rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+
+    #contact-top {
+        font-size: 2rem;
+        padding: 2rem 0;
+    }
+
+    .title {
+        font-size: 24px;
+        line-height: 32px;
+        max-width: 100%;
+    }
+
+    .input {
+        margin: 20px 0;
+    }
+
+    #map {
+        margin: 1rem 2rem;
+    }
+
+    #map-iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 950px) {
+    #main {
+        flex-direction: column;
+        margin: 0rem 1rem;
+        gap: 1rem;
+    }
+
+    #contact-info {
         width: 100%;
-        padding: 0 2rem;
         height: auto;
-        margin: 1rem 0rem; 
+        padding: 4rem 0rem;
+        padding-left: 10rem;
+
+        align-items: flex-start;
+    }
+
+    #get-in-touch {
+        padding: 0 1rem;
+        width: 100%;
+        margin: 1rem 0rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        height: auto;
     }
 
     #contact-top {
@@ -155,16 +212,15 @@
 @media (max-width: 550px) {
     #main {
         flex-direction: column;
-        height: auto;
         margin: 0;
         gap: 1rem;
     }
 
-    #contact-info, #get-in-touch {
+    #contact-info,
+    #get-in-touch {
         width: 100%;
-        padding: 0 2rem;
-        height: auto;
-        margin: 1rem 0rem; 
+        padding: 0 1rem;
+        margin: 1rem 0rem;
     }
 
     #contact-top {
