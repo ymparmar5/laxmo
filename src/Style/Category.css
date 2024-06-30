@@ -77,6 +77,8 @@
 .category-names {
     text-align: center;
     margin-top: 1rem;
+    color: var(--color6);
+    font-weight: 500;
     font-size: 1.2rem;
 }
 
