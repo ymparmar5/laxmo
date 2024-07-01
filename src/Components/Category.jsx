@@ -79,7 +79,7 @@
             >  
                 {category.map((item, index) => (
                     
-                    <div key={index} onClick={() => navigate(`/category/${item.name}`)} className="category-container">
+                    <div key={index} onClick={() => navigate(`/shop`)} className="category-container">
                         
                         <div className="category-imgs" >
                             <img src = {item.image} alt={item.name} />

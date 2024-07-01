@@ -1,30 +1,19 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Style/Footer.css"
-import { useState } from "react";
-import jsPDF from "jspdf";
-import { Contact } from "lucide-react";
-
 
 const Footer = () => {
 
-  const [downloaded, setDownloaded] = useState(false);
-
-  const downloadPdf = () => {
-    const doc = new jsPDF();
-    doc.text("Hello, this is a downloadable PDF file.", 10, 10);
-    doc.save("LAXMO.pdf");
-    setDownloaded(true);
-  };
   return (
-
-
-    <>    
+    <>
       <div className="footer-top" >
-      <i  onClick={downloadPdf} className="fa-solid fa-file-pdf fa-2xl"></i>
+        <a href="/LAXMO.pdf" download="catlog-loxmo" >
+          <i className="fa-solid fa-file-pdf fa-2xl"></i>
+        </a>
 
-      <a href="https://wa.me/918000081161">
-    <img src="/whatsapp.png" alt="whatsapp" className="whatsapp" />
-  </a>
+
+        <a href="https://wa.me/918000081161">
+          <img src="/whatsapp.png" alt="whatsapp" className="whatsapp" />
+        </a>
 
         <p>
           Ready to get started? <br />
@@ -32,7 +21,7 @@ const Footer = () => {
         </p>
 
         <Link to={"./contact"} > <button id="get-connect"  >
-          
+
           GET CONNECTED</button></Link>
 
       </div>
