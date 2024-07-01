@@ -124,7 +124,7 @@ header {
     order: 1;
   }
 
-  nav {width: 90%;
+  nav {width: 100%;
     position: absolute;
     top: 4rem; /* Position below header */
     left: 0;
@@ -141,6 +141,7 @@ header {
     display: none;
     background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
     padding: 1rem 0;
+    width: 100%;
   }
 
   menu.mobile-menu-open {

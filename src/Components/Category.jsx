@@ -4,7 +4,7 @@
 
     const category = [
         { image: '/6.png', name: 'Residencial' },
-        { image: '/20-9-CIRCULAION-PUMP.png', name: 'Pressure system' },
+        { image: '/20-9-CIRCULAION-PUMP.png', name: 'Pressure ' },
         { image: '/V-6.png', name: 'Agriculture' },
         { image: '/LXWP-ONLY-ENGINE.png', name: 'Industrial' },
         { image: '/AIR-COMPRESSOR.png', name: 'Machinary' },
