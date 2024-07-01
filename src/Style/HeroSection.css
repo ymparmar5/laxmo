@@ -104,11 +104,8 @@
   .text {
     font-size: 11px;
   }
-  .hero-icons-left, .hero-icons-right {
-      height: 2.8vh;
-      width: 8.4vw;}
+
       .banner {
-        width: 100vw;
         height: 65vw;
       }
 }

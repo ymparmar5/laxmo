@@ -5,7 +5,7 @@ import myContext from "../Context/myContext";
 import { addToCart, deleteFromCart } from "../Redux/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import '../Style/CategoryPage.css';
+import '../Style/Shop.css';
 
 const CategoryPage = () => {
     const { categoryname } = useParams();
@@ -17,15 +17,7 @@ const CategoryPage = () => {
     const [sortOption, setSortOption] = useState('');
 
 
-    const addCart = (item) => {
-        dispatch(addToCart(item));
-        toast.success("Added to cart")
-    }
-
-    const deleteCart = (item) => {
-        dispatch(deleteFromCart(item));     
-        toast.success("Removed from cart")
-    }
+   
 
     const handleSort = (e) => {
         setSortOption(e.target.value);
@@ -36,16 +28,16 @@ const CategoryPage = () => {
     }, [cartItems]);
 
     const categories = [
-        'Residencial', 'Pressure systen', 'Agricultur', 'Industrial', 'Machinary', 'Solar'
+        'Residencial', 'Pressure system', 'Agricultur', 'Industrial', 'Machinary', 'Solar'
     ];
 
     return (
-        <div className="category-main-content">
-            <div className="category-sidebar">
+        <div className="shop-main-content">
+            <div className="shop-sidebar">
                 <h2>Categories</h2>
-                <ul>
+                <ul className="category-list" >
                     {categories.map((category, index) => (
-                        <li key={index} onClick={() => navigate(`/category/${category}`)}>{category}</li>
+                        <li className="category-item" key={index} onClick={() => navigate(`/category/${category}`)}>{category}</li>
                     ))}
                 </ul>
                 <h2>Sort By</h2>
@@ -57,8 +49,8 @@ const CategoryPage = () => {
                     <option value="name-za">Name: Z to A</option>
                 </select>
             </div>
-            <div className="category-products">
-                <div className="category-header">
+            <div className="shop-products">
+                <div className="shop-top">
                     <h1>{categoryname}</h1>
                 </div>
                 {loading ? (
@@ -66,16 +58,16 @@ const CategoryPage = () => {
                         <Loader />
                     </div>
                 ) : (
-                    <div className="category-container">
-                        <div className="category-grid">
+                    <div className="shop-container">
+                        <div className="shop-grid">
                             {filterProduct.length > 0 ? (
                                 filterProduct.map((item, index) => (
-                                    <div key={index} className="category-card">
-                                        <div className="category-card-content" onClick={() => navigate(`/productinfo/${item.id}`)}>
+                                    <div key={index} className="shop-card">
+                                        <div className="shop-card-content" onClick={() => navigate(`/productinfo/${item.id}`)}>
                                             <img src={item.imgurl1}  alt={item.title} className="category-product-image" />
-                                            <div className="category-product-details">
-                                                <h1 className="category-product-title">{item.title.substring(0, 25)}</h1>
-                                                <div className="category-button-container">
+                                            <div className="shop-product-details">
+                                                <h1 className="shop-product-title">{item.title.substring(0, 25)}</h1>
+                                                <div className="shop-button-container">
                                                   
                                                 </div>
                                             </div>

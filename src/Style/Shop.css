@@ -1,5 +1,6 @@
 .shop-main-content {
     display: flex;
+    flex-direction: row;
     justify-content: flex-start;
 }
 
@@ -9,10 +10,13 @@
     width: 100%;
 }
 
-.shop-top{
+.shop-top {
     width: 100%;
     display: flex;
-    }
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .shop-header h1 {
     font-size: 2rem;
@@ -45,8 +49,8 @@
 .category-item {
     font-size: 1rem;
     cursor: pointer;
-    padding: 0rem 0;
-    margin-bottom: 0rem;
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
     color: var(--color1);
     transition: background-color 0.3s ease;
     text-align: left;
@@ -80,28 +84,27 @@
     margin-top: 1rem;
     width: 100%;
     border: none;
-    color:var(--color5);
+    color: var(--color5);
     background-color: var(--color1);
     padding: 0.5rem;
     font-size: 1rem;
 }
-.shop-filter:hover {
-   
-    color:var(--color5);
-    background-color: var(--color1);
 
+.shop-filter:hover {
+    color: var(--color5);
+    background-color: var(--color1);
 }
+
 .shop-sort-filter {
     width: 50%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     border: 1px solid white;
-}   
-
+}
 
 .shop-products {
-    width: calc(100% - 250px);
+    width: calc(100% - 300px);
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -120,13 +123,12 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     width: 100%;
-   
 }
 
 .shop-card {
     width: 280px;
     height: 300px;
-    margin: 10px 5px;  
+    margin: 10px 5px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -189,4 +191,57 @@
 .shop-pagination button:disabled {
     background-color: var(--color1);
     cursor: not-allowed;
+}
+
+@media (max-width: 750px) {
+    .shop-main-content {
+        flex-direction: column;
+    }
+    .shop-sidebar {
+        width: 100%;
+        padding: 1rem;
+        border-right: none;
+        border-top: 1px solid var(--color1);
+    }
+    .shop-sidebar h2 {
+        font-size: 1.25rem;
+    }
+    .category-item, .subcategory-item {
+        padding: 0.25rem 0;
+    }
+    .shop-products {
+        width: 100%;
+        padding: 1rem;
+    }
+    .shop-header h1 {
+        font-size: 1.5rem;
+    }
+    .shop-sort-filter {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .shop-filter {
+        font-size: 0.875rem;
+        padding: 0.25rem;
+    }
+    .shop-grid {
+        justify-content: center;
+    }
+    .shop-pagination {
+        left: 0;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .shop-header h1 {
+        font-size: 1.25rem;
+    }
+    .shop-filter {
+        font-size: 0.75rem;
+        padding: 0.25rem;
+    }
+    .shop-pagination button {
+        padding: 0.25rem 0.5rem;
+    }
 }

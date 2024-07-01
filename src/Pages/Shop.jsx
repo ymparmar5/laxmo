@@ -1,10 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import myContext from '../Context/myContext';
-import { addToCart, deleteFromCart } from '../Redux/CartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Style/Shop.css';
-import toast from 'react-hot-toast';
 
 const Shop = () => {
     const navigate = useNavigate();
@@ -44,11 +42,12 @@ const Shop = () => {
     });
 
     const filteredProducts = sortedProducts.filter(product => {
+        const productCategories = product.category.split('|').map(cat => cat.trim());
         if (selectedSubcategory) {
-            return product.subcategory === selectedSubcategory;
+            return productCategories.some(cat => cat.includes(selectedSubcategory));
         }
         if (selectedCategory) {
-            return product.category === selectedCategory;
+            return productCategories.some(cat => cat.split('>').some(subCat => subCat.trim() === selectedCategory));
         }
         return true;
     });
@@ -100,22 +99,20 @@ const Shop = () => {
                 </ul>
             </div>
             <div className="shop-products">
-               <div className="shop-top">
-               <div className="shop-header">
-                    <h1>{selectedSubcategory || selectedCategory || 'All Products'}</h1>
+                <div className="shop-top">
+                    <div className="shop-header">
+                        <h1>{selectedSubcategory || selectedCategory || 'All Products'}</h1>
+                    </div>
+                    <div className="shop-sort-filter">
+                        <select onChange={handleSort} value={sortOption} className="shop-filter">
+                            <option value="">Filter</option>
+                            <option value="price-low-high">Price: Low to High</option>
+                            <option value="price-high-low">Price: High to Low</option>
+                            <option value="name-az">Name: A to Z</option>
+                            <option value="name-za">Name: Z to A</option>
+                        </select>
+                    </div>
                 </div>
-                <div className="shop-sort-filter">
-              
-                    <select onChange={handleSort} value={sortOption} className="shop-filter">
-                        <option value="">Filter</option>
-                        <option value="price-low-high">Price: Low to High</option>
-                        <option value="price-high-low">Price: High to Low</option>
-                        <option value="name-az">Name: A to Z</option>
-                        <option value="name-za">Name: Z to A</option>
-                    </select>
-               </div>
-              
-                </div>  
                 <div className="shop-container">
                     <div className="shop-grid">
                         {loading ? (
