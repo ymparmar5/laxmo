@@ -15,10 +15,16 @@ const Footer = () => {
           <img src="/whatsapp.png" alt="whatsapp" className="whatsapp" />
         </a>
 
-        <p>
-          Ready to get started? <br />
-          feel free talk to us today
-        </p>
+        <div id="footer-icons">
+            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-telegram"></i></a>
+            <a href="/"> <i className="footer-icons  fa-xl fa-solid fa-envelope"></i></a>
+            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-instagram"></i></a>
+            <a href="/"> <i className="footer-icons  fa-xl fa-solid fa-location-dot"></i></a>
+            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-facebook  "></i> </a>
+            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-linkedin"></i> </a>
+            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-whatsapp"></i> </a>
+            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-youtube"></i> </a>
+          </div>
 
         <Link to={"./contact"} > <button id="get-connect"  >
 
@@ -74,25 +80,7 @@ const Footer = () => {
             <li>My account</li>
 
           </ul></div>
-        <div className="footer-menu">
-          <h3 className="footer-heading" >
-            NEWS LETTERS
-          </h3>
-          <div id="footer-icons">
-            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-telegram"></i></a>
-            <a href="/"> <i className="footer-icons  fa-xl fa-solid fa-envelope"></i></a>
-            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-instagram"></i></a>
-            <a href="/"> <i className="footer-icons  fa-xl fa-solid fa-location-dot"></i></a>
-          </div>
-          <div id="footer-icons">
-            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-facebook  "></i> </a>
-            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-linkedin"></i> </a>
-            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-whatsapp"></i> </a>
-            <a href="/"> <i className="footer-icons  fa-xl fa-brands fa-youtube"></i> </a>
-
-          </div>
-
-        </div>
+      
       </footer>
       <div id="madeby" >
         <p>&copy; copyright @2024 laxmopumps. all right reserved</p>

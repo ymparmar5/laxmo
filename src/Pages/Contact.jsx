@@ -8,21 +8,21 @@ const Contact = () => {
       <div id="main">
         <div id="contact-info">
         <img src="/telecall.png" />
-          <p>
-          <b>Phone:</b> &nbsp; +91 8000081161 <br /><br />  
-          </p>
-          <p>
+        <a href="tel:8000081161">
+          <b  >Phone:</b> &nbsp; +91 8000081161 <br /><br />  
+          </a>
+          <a href="mailto:laxmopump@gmail.com">
           <b>Email:</b> &nbsp; laxmopump@gmail.com <br /><br />
-          </p>
-          <p>
+          </a>
+          <a href="https://maps.app.goo.gl/W6GD7AsVySMLcJbK9">
             <b>Address:</b> &nbsp; Kevadiya Farm,<br /> 
           
-          </p>
-          <p>
+          </a>
+          <a href="https://maps.app.goo.gl/W6GD7AsVySMLcJbK9">
             Nr. Sahaj Imperia, Dabholi,
-            </p>
+            </a>
          
-          <p>Surat, 395004, Gujarat, India</p>
+            <a href="https://maps.app.goo.gl/W6GD7AsVySMLcJbK9">Surat, 395004, Gujarat, India</a>
         </div>
         <div id="get-in-touch">
           <h3 className="title">Get In Touch</h3>
