@@ -63,9 +63,9 @@ const PrivacyPolicy = () => {
       Laxmo Pump<br />
         Email:laxmopumponline@gmail.com<br />
         Phone:   +91 8000081161<br />
-        Address: 104/C Block, Orchid Green,
-                    LP Savani Rd, Palanpur,
-                    Surat, 395009, Gujarat, India
+        Address: Kevadiya Farm,
+Nr. Sahaj Imperia, Dabholi,
+Surat, 395004, Gujarat, India
       </address>
       <h1 className="policy-title">Shipping Policy</h1>
       <p className="policy-date">Last updated: [10/6/2024]</p>
@@ -82,9 +82,9 @@ const PrivacyPolicy = () => {
         Laxmo Pump<br />
         Email:laxmopumponline@gmail.com<br />
         Phone:   +91 8000081161<br />
-        Address: 104/C Block, Orchid Green,
-                    LP Savani Rd, Palanpur,
-                    Surat, 395009, Gujarat, India
+        Address: Kevadiya Farm,
+Nr. Sahaj Imperia, Dabholi,
+Surat, 395004, Gujarat, India
       </address>
     </div>
   );
