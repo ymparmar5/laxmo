@@ -72,6 +72,13 @@
     font-weight: 500;
     font-size: 1.2rem;
 }
+.category-viewmore {
+    text-align: center;
+    margin-top: rem;
+    color: var(--color1);
+    font-weight: 500;
+    font-size: 10px;
+}
 
 @keyframes rotate {
     from {

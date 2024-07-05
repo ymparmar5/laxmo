@@ -106,14 +106,13 @@ const SignIN = () => {
                         className='signin-input'
                     />
 
-                <div  id="signin-btn" >
                     <button
+                     id="signin-btn" 
                         type='button'
                         onClick={userLoginFunction}
                    
                     >Sign In
                     </button>
-                </div>
                 <div className='signin-text' >
                     <p >Don't Have an account <b> <Link className='signin-text' to={'/sign-up'}>Sign up</Link>
                     </b>

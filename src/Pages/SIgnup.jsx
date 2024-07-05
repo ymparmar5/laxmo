@@ -125,15 +125,14 @@ const Signup = () => {
                     }}
                     className='signup-input'
                 />
-                <div id="signup-btn">
                     <button
+                    id="signup-btn"
                         type='button'
                         onClick={userSignupFunction}
                         className=' '
                     >
                         Sign up
                     </button>
-                </div>
 
                 <div>
                     <p className='signup-text'>Already have an account?<b> <Link className='signup-text' to={'/sign-in'}>Sign-in</Link></b></p>

@@ -45,6 +45,7 @@
     color: var(--color5);
     border: 1px solid white;
     margin: 1rem 0rem;
+    width: 100%;
 }
 
 @media (max-width: 1235px) {

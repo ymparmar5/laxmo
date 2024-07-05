@@ -16,7 +16,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2023/07/LXMPI.png"
     },
     {
@@ -67,7 +67,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Car Washer|Machinery>High Pressure Washer Pumps",
+      category: "Residential>Car Washer|Machinery>High Pressure Washer Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2023/07/png_20230627_182920_0000.png"
     },
     {
@@ -84,7 +84,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Others|Residencial>Car Washer|Machinery>High Pressure Washer Pumps|Industrial",
+      category: "Others|Residential>Car Washer|Machinery>High Pressure Washer Pumps|Industrial",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2023/01/HIGH-PRESSURE-WASHER-PUMP-1-e1673266827748.png"
     },
     {
@@ -101,7 +101,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Others|Residencial>Car Washer|Machinery>High Pressure Washer Pumps|Industrial|Machinery",
+      category: "Others|Residential>Car Washer|Machinery>High Pressure Washer Pumps|Industrial|Machinery",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2023/01/HIGH-PRESSURE-WASHER-PUMP-e1673265121976.png"
     },
     {
@@ -135,7 +135,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Car Washer|Machinery>High Pressure Washer Pumps|Machinery|Solar",
+      category: "Residential>Car Washer|Machinery>High Pressure Washer Pumps|Machinery|Solar",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2022/09/WhatsApp-Image-2022-09-07-at-10.20.10-AM-e1662526315696.jpeg"
     },
     {
@@ -169,7 +169,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Others|Residencial|Industrial>Sewage & Drainage Pumps>SEWAGE PUMP / DEWATERING PUMP",
+      category: "Others|Residential|Industrial>Sewage & Drainage Pumps>SEWAGE PUMP / DEWATERING PUMP",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2022/08/WhatsApp-Image-2022-08-03-at-5.24.56-PM-1-e1660039689433.jpeg"
     },
     {
@@ -186,7 +186,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Car Washer|Machinery>High Pressure Washer Pumps",
+      category: "Residential>Car Washer|Machinery>High Pressure Washer Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2022/02/BATTERY-WASHER-PUMP-e1646022883489.png"
     },
     {
@@ -203,7 +203,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Others|Residencial>Pressure Pumps|Pressure System|Residencial>Self Priming Pumps",
+      category: "Others|Residential>Pressure Pumps|Pressure System|Residential>Self Priming Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2021/12/WhatsApp-Image-2021-12-01-at-1.41.13-PM.jpeg"
     },
     {
@@ -237,7 +237,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Car Washer|Machinery>High Pressure Washer Pumps|Machinery",
+      category: "Residential>Car Washer|Machinery>High Pressure Washer Pumps|Machinery",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2021/12/MD097858-removebg-preview-1.png"
     },
     {
@@ -254,7 +254,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System|Residencial>Self Priming Pumps",
+      category: "Residential>Pressure Pumps|Pressure System|Residential>Self Priming Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2021/04/20-9-CIRCULAION-PUMP-e1644730014401.png"
     },
     {
@@ -271,7 +271,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2021/04/WhatsApp_Image_2022-07-10_at_11.08.41_AM__1_-removebg-preview-e1660039032521.png"
     },
     {
@@ -339,7 +339,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Car Washer|Machinery>High Pressure Washer Pumps|Machinery|Residencial|Vaccum Cleaner",
+      category: "Residential>Car Washer|Machinery>High Pressure Washer Pumps|Machinery|Residential|Vaccum Cleaner",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/11/MD097881-removebg-preview-1.png"
     },
     {
@@ -424,7 +424,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Industrial|Residencial>Mini Sewage",
+      category: "Industrial|Residential>Mini Sewage",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/mini-sewage-pump-e1603520874236.jpg"
     },
     {
@@ -594,7 +594,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/MULTISTAGE-e1644736278255.png"
     },
     {
@@ -628,7 +628,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Car Washer|Machinery>High Pressure Washer Pumps",
+      category: "Residential>Car Washer|Machinery>High Pressure Washer Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/WhatsApp-Image-2022-01-08-at-4.19.57-PM-e1644736716854.jpeg"
     },
     {
@@ -645,7 +645,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -662,7 +662,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -679,7 +679,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -696,7 +696,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/LXAP-4-e1644737771653.png"
     },
     {
@@ -713,7 +713,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -730,7 +730,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -747,7 +747,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -764,7 +764,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/14-e1602133613654.png"
     },
     {
@@ -781,7 +781,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -798,7 +798,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -815,7 +815,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -832,7 +832,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/WhatsApp-Image-2022-02-13-at-1.22.49-PM-e1644738860577.jpeg"
     },
     {
@@ -849,7 +849,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -866,7 +866,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -883,7 +883,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -900,7 +900,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/LXAP-1-e1644739184263.png"
     },
     {
@@ -917,7 +917,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -934,7 +934,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -951,7 +951,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:""
     },
     {
@@ -968,7 +968,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/2-e1602133512958.png"
     },
     {
@@ -1002,7 +1002,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1019,7 +1019,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1036,7 +1036,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1053,7 +1053,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1070,7 +1070,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1087,7 +1087,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1104,7 +1104,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1121,7 +1121,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1138,7 +1138,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1155,7 +1155,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1172,7 +1172,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:""
     },
     {
@@ -1189,7 +1189,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Openwell Pumps",
+      category: "Residential>Openwell Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/10-1-e1602131579434.png"
     },
     {
@@ -1206,7 +1206,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1223,7 +1223,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1240,7 +1240,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1257,7 +1257,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/11-1-e1602133588410.png"
     },
     {
@@ -1291,7 +1291,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1308,7 +1308,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1325,7 +1325,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1342,7 +1342,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/12-e1602133596131.png"
     },
     {
@@ -1359,7 +1359,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1376,7 +1376,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1393,7 +1393,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1410,7 +1410,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/2020_09_06_10_55_IMG_1431-e1602133154780.png"
     },
     {
@@ -1427,7 +1427,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1444,7 +1444,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1461,7 +1461,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1478,7 +1478,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/13-e1602133605765.png"
     },
     {
@@ -1495,7 +1495,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1512,7 +1512,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1529,7 +1529,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1546,7 +1546,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/145-e1602133105237.png"
     },
     {
@@ -1563,7 +1563,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1580,7 +1580,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1597,7 +1597,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1614,7 +1614,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/4-e1602133536477.png"
     },
     {
@@ -1631,7 +1631,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1648,7 +1648,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1665,7 +1665,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:""
     },
     {
@@ -1682,7 +1682,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Self Priming Pumps",
+      category: "Residential>Self Priming Pumps",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/5-e1602133545518.png"
     },
     {
@@ -1699,7 +1699,7 @@ const Mydata = () => {
       stars: 5,
   subcategory:"",
       "time": "2023-06-17T12:34:56.789Z",
-      category: "Residencial>Pressure Pumps|Pressure System",
+      category: "Residential>Pressure Pumps|Pressure System",
       imgurl1:"https://laxmopumps.com/wp-content/uploads/2020/10/MD097988-removebg-preview-e1673333439717.png"
     }
   ];

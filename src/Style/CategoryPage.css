@@ -49,7 +49,8 @@
 
 .category-container {
     max-width: 1200px;
-    width: 100%;
+    width: 300px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +75,8 @@
 }
 
 .category-card-content {
-    height: 100%;
+    width: 250px;
+    height: 250px;
     overflow: hidden;
     cursor: pointer;
     display: flex;
@@ -83,10 +85,10 @@
     justify-content: center;
 }
 
-.category-product-image {
+.category-product-image{
     width: 250px;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .category-product-details {

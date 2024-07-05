@@ -9,12 +9,13 @@ import "../../Style/AddProductPage.css";
 
 const categoryList = [
     { name: 'select cat' },
-    { name: 'Standee Display' },
-    { name: 'cooling accessories' },
-    { name: 'Water Block' },
-    { name: 'LED Bord Profiles' },
-    { name: 'Condenser & heat Sinks' },
-    { name: 'Aquarium Chiller' }
+    { name: 'Residential' },
+    { name: 'Pressure system' },
+    { name: 'Agriculture' },
+    { name: 'Industrial' },
+    { name: 'Machinary' },
+    { name: 'Solar' },
+    { name: 'Uncategorized' }
 ];
 
 const UpdateProductPage = () => {

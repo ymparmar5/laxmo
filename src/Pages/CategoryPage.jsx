@@ -2,9 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Components/Loader";
 import { useContext, useEffect, useState } from "react";
 import myContext from "../Context/myContext";
-import { addToCart, deleteFromCart } from "../Redux/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import toast from "react-hot-toast";
 import '../Style/Shop.css';
 
 const CategoryPage = () => {
@@ -28,7 +26,7 @@ const CategoryPage = () => {
     }, [cartItems]);
 
     const categories = [
-        'Residencial', 'Pressure system', 'Agricultur', 'Industrial', 'Machinary', 'Solar'
+        'Residential', 'Pressure system', 'Agricultur', 'Industrial', 'Machinary', 'Solar'
     ];
 
     return (
@@ -64,7 +62,7 @@ const CategoryPage = () => {
                                 filterProduct.map((item, index) => (
                                     <div key={index} className="shop-card">
                                         <div className="shop-card-content" onClick={() => navigate(`/productinfo/${item.id}`)}>
-                                            <img src={item.imgurl1}  alt={item.title} className="category-product-image" />
+                                            <img src={item.imgurl1}  alt={item.title} className="shop-product-image" />
                                             <div className="shop-product-details">
                                                 <h1 className="shop-product-title">{item.title.substring(0, 25)}</h1>
                                                 <div className="shop-button-container">
