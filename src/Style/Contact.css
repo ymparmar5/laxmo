@@ -32,6 +32,24 @@
     padding-left: 5rem;
 }
 
+#contact-icons {
+    margin: 1rem 0rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contact-icons {
+    margin: 1rem 0rem;
+    margin-right: 0.9rem;
+    color: var(--color6);
+  }
+  
+  .contact-icons:hover {
+    color: var(--color6);
+  }
+
 #contact-info img {
     width: 70%;
     z-index: 1;

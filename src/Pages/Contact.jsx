@@ -23,6 +23,18 @@ const Contact = () => {
             </a>
          
             <a href="https://maps.app.goo.gl/W6GD7AsVySMLcJbK9">Surat, 395004, Gujarat, India</a>
+
+            <div id="contact-icons">
+            <a  href="https://www.t.me/AardipJogani " target="_blank" > <i className="contact-icons  fa-xl fa-brands fa-telegram"></i></a>
+            <a  href="mailto:laxmopump@gmail.com" target="_blank" > <i className="contact-icons  fa-xl fa-solid fa-envelope"></i></a>
+            <a  href="https://www.instagram.com/laxmo_technology/" target="_blank" > <i className="contact-icons  fa-xl fa-brands fa-instagram"></i></a>
+            <a  href="https://maps.app.goo.gl/W6GD7AsVySMLcJbK9" target="_blank" > <i className="contact-icons  fa-xl fa-solid fa-location-dot"></i></a>
+            <a  href="https://www.facebook.com/people/Laxmo-Pump/pfbid02vTXqfRy7wGahrG7BFBnA2oP9mh13WPT8Evduj5SycwExH1HkotKJMwYGSKrnnHAZl/" target="_blank" > <i className="contact-icons  fa-xl fa-brands fa-facebook  "></i> </a>
+            <a  href="https://www.linkedin.com/in/laxmo-pumps-water-pump-791492205/" target="_blank" > <i className="contact-icons  fa-xl fa-brands fa-linkedin"></i> </a>
+            <a  href="https://wa.me/918000081161" target="_blank" > <i className="contact-icons  fa-xl fa-brands fa-whatsapp"></i> </a>
+            <a  href="https://www.youtube.com/@laxmopumps9657" target="_blank" > <i className="contact-icons  fa-xl fa-brands fa-youtube"></i> </a>
+          </div>
+
         </div>
         <div id="get-in-touch">
           <h3 className="title">Get In Touch</h3>

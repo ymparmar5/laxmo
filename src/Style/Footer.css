@@ -92,11 +92,11 @@ footer {
 .footer-icons {
   margin: 1rem 0rem;
   margin-right: 2rem;
-  color: var(--color6);
+  color: var(--color1);
 }
 
 .footer-icons:hover {
-  color: var(--color1);
+  color: var(--color6);
 }
 
 .footer-menu p {
@@ -124,6 +124,12 @@ footer {
     display: none;
    
   }
+  #madeby{
+
+    font-size: 0.8rem;
+
+  }
+
 }
 
 @media (max-width: 1000px) {
