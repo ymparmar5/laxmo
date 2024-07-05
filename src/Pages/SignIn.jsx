@@ -53,9 +53,9 @@ const SignIN = () => {
                     toast.success("Login Successfully");
                     setLoading(false);
                     if(user.role === "user") {
-                        navigate('/user-dashboard');
+                        navigate('/user');
                     }else{
-                        navigate('/admin-dashboard');
+                        navigate('/admin');
                     }
                 });
                 return () => data;

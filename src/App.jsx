@@ -46,13 +46,13 @@ const App = () => {
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/tandc" element={<TermsAndConditions />} />
 
-          <Route path="/user-dashboard" element={
+          <Route path="/user" element={
             <ProtectedRouteForUser>
               <UserDashboard />
             </ProtectedRouteForUser>
           } />
 
-          <Route path="/admin-dashboard" element={
+          <Route path="/admin" element={
             <ProtectedRouteForAdmin >
               <AdminDashboard />
             </ProtectedRouteForAdmin>
