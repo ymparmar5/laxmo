@@ -46,7 +46,6 @@ const Footer = () => {
 
           </h3>
           <ul>
-
             <Link to={"/privacy"} >
               <li>Privacy policy</li>
             </Link>
@@ -60,10 +59,6 @@ const Footer = () => {
             <Link to={"./user-dashboard"} >
               <li>Track orders</li>
             </Link>
-
-
-
-
           </ul>
         </div>
 
@@ -73,12 +68,22 @@ const Footer = () => {
           </h3>
 
           <ul>
-            <li>Sign Up</li>
-            <li>Login</li>
-            <li>Cart</li>
-            <li>wish list</li>
-            <li>My account</li>
+          <Link to={"./sign-up"} >
+              <li>Sign Up</li>
+            </Link>
+            <Link to={"./sign-ip"} >
+              <li>Login</li>
+            </Link>
+            <Link to={"./cart"} >
+              <li>cart</li>
+            </Link>
+            <Link to={"./cart"} >
+              <li>wish list</li>
+            </Link>
 
+            <Link to={"./admin-dashboard"} >
+              <li>My account</li>
+            </Link>
           </ul></div>
       
       </footer>
