@@ -1657,7 +1657,6 @@ const Mydata = () => {
       description: "",
        stock: true,
       date: "Jun 14, 2024",
-    
       imgurl2: "",
       imgurl3: "",
       imgurl4: "",
