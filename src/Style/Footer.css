@@ -130,11 +130,8 @@ footer > * {
   width: 100%;
   font-size: 1rem;
   position: relative;
-  bottom: 0px;
-  font-family: var(--font);
-  border-top: 1px solid var(--color5);
-  color: var(--color4);
-  background-color: var(--color1);
+  color: var(--color1);
+  background-color: white;
 }
 
 @media (max-width: 1235px) {
