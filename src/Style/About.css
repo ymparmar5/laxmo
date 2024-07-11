@@ -15,8 +15,8 @@
 }
 
 #about-top {
-    margin: 1rem 0rem;
-    padding: 4rem 0rem;
+    margin: 0rem 0rem;
+    padding: 5rem 0rem;
     background-image: url(/water.jpg);
     background-position-y: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
