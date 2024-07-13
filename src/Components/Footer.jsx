@@ -11,9 +11,9 @@ const Footer = () => {
         </a>
 
 
-        <a href="https://wa.me/918000081161">
-          <img src="/whatsapp.png" alt="whatsapp" className="whatsapp" />
-        </a>
+          {/* <a href="https://wa.me/918000081161">
+            <img src="/whatsapp.png" alt="whatsapp" className="whatsapp" />
+          </a> */}
 
         <div id="footer-icons">
             <a  href="https://www.t.me/AardipJogani " target="_blank" > <i className="footer-icons  fa-xl fa-brands fa-telegram"></i></a>
