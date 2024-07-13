@@ -5,7 +5,7 @@ const About = () => {
 
   return (
     <>
-      <p id='about-top'>ABOUT US</p>
+      <p id='about-top'></p>
       <h3 className='about-title'>
         Laxmo Pumps is surat base manufacturer of every type of pumps and motor for various prupose
       </h3>

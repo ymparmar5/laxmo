@@ -42,19 +42,9 @@
     box-sizing: border-box;
 }
 
-.category-imgs img:hover {
-    border: none;
-}
 
-.category-imgs-hover {
-    margin-top: -9.3rem;
-    display: block;
-    height: 150px;
-    width: 150px;
-    border: 0.5px solid var(--color1);
-    border-radius: 50%;
-    box-sizing: border-box;
-}
+
+
 
 .category-imgs-hover:hover {
     border: 2px dashed var(--color1);

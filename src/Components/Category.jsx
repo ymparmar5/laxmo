@@ -86,7 +86,6 @@ const Category = () => {
                         <div className="category-imgs">
                             <img src={item.image} alt={item.name} />
                         </div>
-                        <div className="category-imgs-hover"></div>
                         <h1 className="category-names">{item.name}</h1>
                         <p className="category-viewmore" >view more..</p>
                     </div>

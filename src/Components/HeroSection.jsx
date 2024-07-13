@@ -3,14 +3,12 @@ import '../Style/HeroSection.css'; // Update this path as needed
 
 const HeroSection = () => {
   const slides = [
-    { src: "/LAXMO-7.jpg", alt: "Slide 7" },
-    { src: "/LAXMO-1.jpg", alt: "Slide 1" },
-    { src: "/LAXMO-2.jpg", alt: "Slide 2" },
-    { src: "/LAXMO-3.jpg", alt: "Slide 3" },
-    { src: "/LAXMO-4.jpg", alt: "Slide 4" },
-    { src: "/LAXMO-5.jpg", alt: "Slide 5" },
-    { src: "/LAXMO-6.jpg", alt: "Slide 6" },
-    
+    { src: "/Master.jpg", alt: "Slide 0" },
+    { src: "/Machinery.jpg", alt: "Slide 1" },
+    { src: "/Industries.jpg", alt: "Slide 2" },
+    { src: "/Agriculture.jpg", alt: "Slide 3" },
+    { src: "/Presure.jpg", alt: "Slide 4" },
+    { src: "/Residential.jpg", alt: "Slide 5" },
   ];
 
   const [slideIndex, setSlideIndex] = useState(0);
@@ -38,18 +36,6 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, [slideIndex]);
 
-  // const previousSlide = () => {
-  //   setSlideIndex((slideIndex) =>
-  //     slideIndex > 0 ? slideIndex - 1 : slides.length - 1
-  //   );
-  // };
-
-  // const nextSlide = () => {
-  //   setSlideIndex((slideIndex) =>
-  //     slideIndex + 1 < slides.length ? slideIndex + 1 : 0
-  //   );
-  // };
-
   return (
     <div id="hero">
       <div className="slideshow-container">
@@ -60,17 +46,9 @@ const HeroSection = () => {
             style={{ display: index === slideIndex ? 'block' : 'none' }}
           >
             <img className="banner" src={slide.src} alt={slide.alt} />
-            {/* <div className="text">{slide.caption}</div> */}
           </div>
         ))}
       </div>
-
-      {/* <div className="hero-icons-left" onClick={previousSlide}>
-        <i className="fa-solid fa-chevron-left fa-fade fa-xl"></i>
-      </div>
-      <div className="hero-icons-right" onClick={nextSlide}>
-        <i className="fa-solid fa-chevron-right fa-fade fa-xl"></i>
-      </div> */}
 
       <br />
       <div style={{ textAlign: 'center' }}>

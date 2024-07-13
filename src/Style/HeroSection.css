@@ -17,8 +17,8 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-    height: 3.6vh;
-    width: 2.4vw;
+  height: 3.6vh;
+  width: 2.4vw;
   color: var(--color1);
   background-color: var(--color7);
   border-radius: 1400px;
@@ -37,6 +37,7 @@
 
 .hero-bannerSlides {
   display: none;
+  position: relative;
 }
 
 .text {
@@ -70,7 +71,6 @@
 }
 
 .active {
-  
   background-color: var(--color6);
 }
 
@@ -93,24 +93,41 @@
     font-size: 11px;
   }
   .hero-icons-left, .hero-icons-right {
-      height: 2.8vh;
-      width: 8.4vw;}
-      .banner {
-        width: 100vw;
-        height: 65vw;
-      }
+    height: 2.8vh;
+    width: 8.4vw;
+  }
+  .banner {
+    width: 100vw;
+    height: 65vw;
+  }
 }
-@media only screen and (max-width:860px) {
+
+@media only screen and (max-width: 860px) {
   .text {
     font-size: 11px;
   }
-
-      .banner {
-        height: 65vw;
-      }
+  .banner {
+    height: 65vw;
+  }
 }
+
 /* Slideshow container */
 .slideshow-container {
   position: relative;
   margin: auto;
+}
+
+.slide-text {
+  font-family: "Charmonman", Sans-serif;;
+  position: absolute;
+  bottom: 10%;
+  left: 20%;
+  transform: translateX(-50%);
+  color: var(--color1);
+  font-weight:bolder;
+  font-size: 2.5rem;
+  font-style: italic;
+  background-color: #f2f2f2b0;
+  padding: 10px;
+  border-radius: 5px;
 }

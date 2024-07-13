@@ -21,7 +21,7 @@ const Header = () => {
     <header>
       <div id="header">
         <NavLink to="/">
-          <img id="logo" src="/logo2.png" alt="logo" />
+          <img id="logo" src="/logo.jpg" alt="logo" />
         </NavLink>
 
         <nav className={isMobileMenuOpen ? "mobile-menu-open" : ""}>
