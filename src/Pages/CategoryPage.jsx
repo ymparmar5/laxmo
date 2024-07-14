@@ -26,7 +26,7 @@ const CategoryPage = () => {
     }, [cartItems]);
 
     const categories = [
-        'Residential', 'Pressure system', 'Agricultur', 'Industrial', 'Machinary', 'Solar'
+        'Residential', 'Pressure', 'Agricultur', 'Industrial', 'Machinery', 'Solar'
     ];
 
     return (

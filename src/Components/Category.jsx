@@ -4,7 +4,7 @@ import "../Style/Category.css";
 
 const category = [
     { image: '/6.png', name: 'Residential' },
-    { image: '/20-9-CIRCULAION-PUMP.png', name: 'Pressure' },
+    { image: '/20-9-CIRCULAION-PUMP.png', name: 'Pressure System' },
     { image: '/V-6.png', name: 'Agriculture' },
     { image: '/LXWP-ONLY-ENGINE.png', name: 'Industrial' },
     { image: '/AIR-COMPRESSOR.png', name: 'Machinery' },

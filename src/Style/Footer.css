@@ -110,13 +110,14 @@ footer > * {
 }
 
 .footer-icons {
-  margin: 1rem 0rem;
-  margin-right: 2rem;
+  margin: 1.5rem 2rem 1.5rem 0rem;
+  width: 35px;
   color: var(--color1);
+  transition: transform 0.2s ease
 }
 
 .footer-icons:hover {
-  color: var(--color6);
+  transform: scale(1.2); 
 }
 
 .footer-menu p {
