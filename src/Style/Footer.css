@@ -108,7 +108,7 @@ footer > * {
 }
 
 .footer-icons {
-  margin: 0rem 1.5rem 0rem 0rem;
+  margin: 0rem 1.5rem 0rem 1rem;
   width: 35px;
   transition: transform 0.2s ease
 }
