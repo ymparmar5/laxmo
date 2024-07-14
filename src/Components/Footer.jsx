@@ -28,7 +28,7 @@ const Footer = () => {
 
         <Link to={"./contact"} > <button id="get-connect"  >
 
-          GET CONNECTED</button></Link>
+          CONNECT</button></Link>
 
       </div>
       <footer>
