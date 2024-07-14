@@ -10,7 +10,7 @@ import "../../Style/AddProductPage.css";
 const categoryList = [
   { name: 'select cat' },
   { name: 'Residential' },
-  { name: 'Pressure system' },
+  { name: 'Pressure' },
   { name: 'Agriculture' },
   { name: 'Industrial' },
   { name: 'Machinary' },
