@@ -101,7 +101,7 @@ const AddProductPage = () => {
   const handleCategoryChange = (e) => {
     const category = e.target.value;
     setCategory(category);
-    setSubcategory(''); // Reset subcategory when category changes
+    setSubcategory(''); 
   };
 
   const handleSubcategoryChange = (e) => {
@@ -153,23 +153,7 @@ const AddProductPage = () => {
           </div>
         </div>
         
-        <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <input
-              type="file"
-              name="imgurl4"
-              onChange={handleImageUpload}
-            />
-          </div>
-
-          <div className="add-product-form-group">
-            <input
-              type="file"
-              name="imgurl5"
-              onChange={handleImageUpload}
-            />
-          </div>  
-        </div>
+ 
         
         <div className="add-product-form-row">
           <div className="add-product-form-group">

@@ -171,22 +171,7 @@ const UpdateProductPage = () => {
                         />
                     </div>
                 </div>
-                <div className="add-product-form-row">
-                    <div className="add-product-form-group">
-                        <input
-                            type="file"
-                            name="imgurl4"
-                            onChange={handleImageUpload}
-                        />
-                    </div>
-                    <div className="add-product-form-group">
-                        <input
-                            type="file"
-                            name="imgurl5"
-                            onChange={handleImageUpload}
-                        />
-                    </div>
-                </div>
+
                 <div className="add-product-form-row">
                     <div className="add-product-form-group">
                         <select
@@ -225,26 +210,7 @@ const UpdateProductPage = () => {
                         rows="5"
                     />
                 </div>
-                <div className="add-product-form-row">
-                    <div className="add-product-form-group">
-                        <input
-                            type="number"
-                            name="stars"
-                            value={product.stars}
-                            onChange={(e) => setProduct({ ...product, stars: e.target.value })}
-                            placeholder="Stars"
-                        />
-                    </div>
-                    <div className="add-product-form-group">
-                        <input
-                            type="number"
-                            name="stock"
-                            value={product.stock}
-                            onChange={(e) => setProduct({ ...product, stock: e.target.value })}
-                            placeholder="Stock"
-                        />
-                    </div>
-                </div>
+            
                 <div className="add-product-form-group">
                     <button
                         onClick={updateProduct}
