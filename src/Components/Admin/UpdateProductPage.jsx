@@ -5,10 +5,10 @@ import { fireDB } from "../../FireBase/FireBaseConfig";
 import toast from "react-hot-toast";
 import Loader from "../Loader";
 import myContext from "../../Context/myContext";
+import { uploadImage } from '../Admin/Cloudnary'; // Import the Cloudinary upload function
 import "../../Style/AddProductPage.css";
 
 const categoryList = [
-    { name: 'select cat' },
     { name: 'Residential' },
     { name: 'Pressure system' },
     { name: 'Agriculture' },
@@ -45,6 +45,21 @@ const UpdateProductPage = () => {
         })
     });
 
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            try {
+                const url = await uploadImage(file);
+                setProduct((prevProduct) => ({
+                    ...prevProduct,
+                    [e.target.name]: url,
+                }));
+            } catch (error) {
+                toast.error('Image upload failed');
+            }
+        }
+    };
+
     const getSingleProductFunction = async () => {
         setLoading(true);
         try {
@@ -73,6 +88,7 @@ const UpdateProductPage = () => {
         } catch (error) {
             console.log(error);
             setLoading(false);
+            toast.error("Update product failed");
         }
     };
 
@@ -97,71 +113,36 @@ const UpdateProductPage = () => {
                             placeholder="Product Title"
                         />
                     </div>
-                    <div className="add-product-form-group">
-                        <input
-                            type="number"
-                            name="price"
-                            value={product.price}
-                            onChange={(e) => setProduct({ ...product, price: e.target.value })}
-                            placeholder="Product Price"
-                        />
-                    </div>
-                    <div className="add-product-form-group">
-                        <input
-                            type="number"
-                            name="salePrice"
-                            value={product.salePrice}
-                            onChange={(e) => setProduct({ ...product, salePrice: e.target.value })}
-                            placeholder="Sale Price"
-                        />
-                    </div>
                 </div>
                 <div className="add-product-form-row">
                     <div className="add-product-form-group">
                         <input
-                            type="text"
+                            type="file"
                             name="imgurl1"
-                            value={product.imgurl1}
-                            onChange={(e) => setProduct({ ...product, imgurl1: e.target.value })}
-                            placeholder="Product Image Url"
+                            onChange={handleImageUpload}
                         />
                     </div>
                     <div className="add-product-form-group">
                         <input
-                            type="text"
-                            name="imgurl1"
-                            value={product.imgurl1}
-                            onChange={(e) => setProduct({ ...product, imgurl1: e.target.value })}
-                            placeholder="Additional Image Url 1"
-                        />
-                    </div>
-                    <div className="add-product-form-group">
-                        <input
-                            type="text"
+                            type="file"
                             name="imgurl2"
-                            value={product.imgurl2}
-                            onChange={(e) => setProduct({ ...product, imgurl2: e.target.value })}
-                            placeholder="Additional Image Url 2"
+                            onChange={handleImageUpload}
+                        />
+                    </div>
+                    <div className="add-product-form-group">
+                        <input
+                            type="file"
+                            name="imgurl3"
+                            onChange={handleImageUpload}
                         />
                     </div>
                 </div>
                 <div className="add-product-form-row">
                     <div className="add-product-form-group">
                         <input
-                            type="text"
-                            name="imgurl3"
-                            value={product.imgurl3}
-                            onChange={(e) => setProduct({ ...product, imgurl3: e.target.value })}
-                            placeholder="Additional Image Url 3"
-                        />
-                    </div>
-                    <div className="add-product-form-group">
-                        <input
-                            type="text"
+                            type="file"
                             name="imgurl4"
-                            value={product.imgurl4}
-                            onChange={(e) => setProduct({ ...product, imgurl4: e.target.value })}
-                            placeholder="Additional Image Url 4"
+                            onChange={handleImageUpload}
                         />
                     </div>
                     <div className="add-product-form-group">

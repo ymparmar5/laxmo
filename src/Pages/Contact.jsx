@@ -39,7 +39,7 @@ const Contact = () => {
         <div id="get-in-touch">
           <h3 className="title">Get In Touch</h3>
           <div id="form">
-            <form>
+            <form action="https://formspree.io/f/mjkbklrl" method="POST" > 
               <div className="input">
                 <label htmlFor="Fullname">Full Name</label>
                 <input type="text" name="fullname" id="Fullname" />

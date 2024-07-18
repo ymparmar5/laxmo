@@ -63,7 +63,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-menu">
-          <h3 className="footer-heading" >        MY ACCOUNTS
+          <h3 className="footer-heading" >MY ACCOUNTS
 
           </h3>
 
