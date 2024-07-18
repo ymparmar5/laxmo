@@ -9,14 +9,24 @@ import { uploadImage } from '../Admin/Cloudnary'; // Import the Cloudinary uploa
 import "../../Style/AddProductPage.css";
 
 const categoryList = [
+    { name: 'Uncategorized' },
     { name: 'Residential' },
     { name: 'Pressure system' },
     { name: 'Agriculture' },
     { name: 'Industrial' },
     { name: 'Machinary' },
     { name: 'Solar' },
-    { name: 'Uncategorized' }
 ];
+
+const subcategoryList = {
+    Agriculture: ['Agri Openwell', 'Monoblock Pumps', 'V-4 Pumps', 'V-6 Pumps'],
+    'Pressure system': ['Pressure Pumps', 'Self Priming Pumps'],
+    Industrial: ['Boiler feed Pumps', 'Chemical Pumps', 'S.S Monoblock Pumps', 'Sewage & Drainage Pumps', 'SEWAGE PUMP / DEWATERING PUMP', 'Vertical Inline Pumps', 'Lawn Mover Machine'],
+    Machinary: ['Air Compressor', 'High Pressure Washer Pumps', 'Petrol and Diesel Water Pumps', 'petrol engine', 'Piston Pumps'],
+    Residential: ['Car Washer', 'Mini Sewage', 'Openwell Pumps', 'Pressure Pumps', 'Self Priming Pumps'],
+    Solar: ['Solar Pump'],
+    Uncategorized: []
+};
 
 const UpdateProductPage = () => {
     const context = useContext(myContext);
@@ -33,7 +43,9 @@ const UpdateProductPage = () => {
         imgurl2: "",
         imgurl3: "",
         imgurl4: "",
+        imgurl5: "",
         category: "",
+        subcategory: "",
         description: "",
         stars: "",
         stock: true,
@@ -44,6 +56,9 @@ const UpdateProductPage = () => {
             year: "numeric",
         })
     });
+
+    const [category, setCategory] = useState('');
+    const [subcategory, setSubcategory] = useState('');
 
     const handleImageUpload = async (e) => {
         const file = e.target.files[0];
@@ -70,6 +85,8 @@ const UpdateProductPage = () => {
                 date: productData?.date,
                 time: productData?.time,
             });
+            setCategory(productData?.category?.split('>')[0] || '');
+            setSubcategory(productData?.category?.split('>')[1] || '');
             setLoading(false);
         } catch (error) {
             console.log(error);
@@ -78,18 +95,35 @@ const UpdateProductPage = () => {
     };
 
     const updateProduct = async () => {
+        if (product.title === '' || product.imgurl1 === '' || category === '' || product.description === '') {
+            return toast.error('All fields are required');
+        }
+
+        const combinedCategory = `${category}${subcategory ? '>' + subcategory : ''}`;
+
         setLoading(true);
         try {
-            await setDoc(doc(fireDB, 'products', id), product);
+            await setDoc(doc(fireDB, 'products', id), { ...product, category: combinedCategory });
             toast.success("Product updated successfully");
             getAllProductFunction();
             setLoading(false);
-            navigate('/admin-dashboard');
+            navigate('/admin');
         } catch (error) {
             console.log(error);
             setLoading(false);
             toast.error("Update product failed");
         }
+    };
+
+    const handleCategoryChange = (e) => {
+        const selectedCategory = e.target.value;
+        setCategory(selectedCategory);
+        setSubcategory(''); // Reset subcategory when category changes
+    };
+
+    const handleSubcategoryChange = (e) => {
+        const selectedSubcategory = e.target.value;
+        setSubcategory(selectedSubcategory);
     };
 
     useEffect(() => {
@@ -146,14 +180,37 @@ const UpdateProductPage = () => {
                         />
                     </div>
                     <div className="add-product-form-group">
+                        <input
+                            type="file"
+                            name="imgurl5"
+                            onChange={handleImageUpload}
+                        />
+                    </div>
+                </div>
+                <div className="add-product-form-row">
+                    <div className="add-product-form-group">
                         <select
-                            value={product.category}
-                            onChange={(e) => setProduct({ ...product, category: e.target.value })}
+                            value={category}
+                            onChange={handleCategoryChange}
                         >
                             <option disabled>Select Product Category</option>
                             {categoryList.map((value, index) => (
                                 <option key={index} value={value.name}>
                                     {value.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="add-product-form-group">
+                        <select
+                            value={subcategory}
+                            onChange={handleSubcategoryChange}
+                            disabled={!category}
+                        >
+                            <option disabled>Select SubCategory</option>
+                            {category && subcategoryList[category]?.map((value, index) => (
+                                <option key={index} value={value}>
+                                    {value}
                                 </option>
                             ))}
                         </select>

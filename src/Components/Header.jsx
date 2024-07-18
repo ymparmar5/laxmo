@@ -5,13 +5,13 @@ import { useSelector } from "react-redux";
 import SearchBar from "./SearchBar";
 
 const Header = () => {
-  // const user = JSON.parse(localStorage.getItem('users'));
-  const navigate = useNavigate();
+  // // const user = JSON.parse(localStorage.getItem('users'));
+  // const navigate = useNavigate();
 
-  const logout = () => {
-    localStorage.clear('users');
-    navigate("/sign-in");
-  };
+  // const logout = () => {
+  //   localStorage.clear('users');
+  //   navigate("/sign-in");
+  // };
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -21,7 +21,7 @@ const Header = () => {
     <header>
       <div id="header">
         <NavLink to="/">
-          <img id="logo" src="/logo.jpg" alt="logo" />
+          <img id="logo" src="/logo.png" alt="logo" />
         </NavLink>
 
         <nav className={isMobileMenuOpen ? "mobile-menu-open" : ""}>

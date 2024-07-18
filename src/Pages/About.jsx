@@ -7,7 +7,7 @@ const About = () => {
     <>
       <p id='about-top'></p>
       <h3 className='about-title'>
-        Laxmo Pumps is surat base manufacturer of every type of pumps and motor for various prupose
+        Laxmo Technology is Gujrat base manufacturer and supplier every type of pumps-motor & powertools for various purpose
       </h3>
       <div id="about-main">
 

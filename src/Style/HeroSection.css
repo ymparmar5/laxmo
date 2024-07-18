@@ -12,6 +12,29 @@
   object-fit: fill;
 }
 
+.hero-heading{
+  position: absolute;
+  top: 5%;
+  left: 3px;
+  font-family: "Charmonman", cursive;
+  font-style:italic;
+  width: 40%;
+  font-size: 3rem;
+  color: var(--color1);
+  font-weight:bolder;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.753) 0%, rgba(255,255,255,0) 100%);}
+.hero-title{
+  position: absolute;
+  bottom: 3%;
+  left: 3px;
+  font-family: "Charmonman", cursive;
+  font-style:italic;
+  width: 40%;
+  font-size: 3rem;
+  color: var(--color1);
+  font-weight:bolder;
+background: linear-gradient(90deg, rgb(250, 250, 250) 0%, rgba(255,255,255,0) 100%);
+}
 .hero-icons-left, .hero-icons-right {
   display: flex;
   align-items: center;

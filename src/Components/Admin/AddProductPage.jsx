@@ -9,16 +9,29 @@ import { uploadImage } from '../Admin/Cloudnary'; // Import the Cloudinary uploa
 import "../../Style/AddProductPage.css";
 
 const categoryList = [
+  { name: 'Uncategorized' },
   { name: 'Residential' },
   { name: 'Pressure' },
   { name: 'Agriculture' },
   { name: 'Industrial' },
   { name: 'Machinary' },
   { name: 'Solar' },
-  { name: 'Uncategorized' }
+ 
 ];
 
-const predefinedProducts = [];
+const categoriesList = {
+  Agriculture: ['Agri Openwell', 'Monoblock Pumps', 'V-4 Pumps', 'V-6 Pumps'],
+  'Electronic Control Pumps': [],
+  Industrial: ['Boiler feed Pumps', 'Chemical Pumps', 'S.S Monoblock Pumps', 'Sewage & Drainage Pumps', 'SEWAGE PUMP / DEWATERING PUMP', 'Vertical Inline Pumps', 'Lawn Mover Machine'],
+  Machinary: ['Air Compressor', 'High Pressure Washer Pumps', 'Petrol and Diesel Water Pumps', 'petrol engine', 'Piston Pumps'],
+  Others: [],
+  Pressure: [],
+  Residential: ['Car Washer', 'Mini Sewage', 'Openwell Pumps', 'Pressure Pumps', 'Self Priming Pumps'],
+  Solar: [],
+  Sprinkler: [],
+  'Swimming Pool Pump': [],
+  'Vaccum Cleaner': []
+};
 
 const AddProductPage = () => {
   const context = useContext(myContext);
@@ -33,6 +46,7 @@ const AddProductPage = () => {
     imgurl2: '',
     imgurl3: '',
     imgurl4: '',
+    imgurl5: '',
     category: '',
     description: '',
     stars: '',
@@ -44,6 +58,9 @@ const AddProductPage = () => {
       year: 'numeric', 
     })
   });
+  
+  const [category, setCategory] = useState('');
+  const [subcategory, setSubcategory] = useState('');
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -61,22 +78,35 @@ const AddProductPage = () => {
   };
 
   const AddProductPageFunction = async () => {
-    if (product.title === '' || product.imgurl1 === '' || product.category === '' || product.description === '') {
+    if (product.title === '' || product.imgurl1 === '' || category === '' || product.description === '') {
       return toast.error('All fields are required');
     }
+
+    const combinedCategory = `${category}${subcategory ? '>' + subcategory : ''}`;
 
     setLoading(true);
     try {
       const productRef = collection(fireDB, 'products');
-      await addDoc(productRef, product);
+      await addDoc(productRef, { ...product, category: combinedCategory });
       toast.success('Product added successfully');
-      navigate('/admin-dashboard');
+      navigate('/admin');
       setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
       toast.error('Add product failed');
     }
+  };
+
+  const handleCategoryChange = (e) => {
+    const category = e.target.value;
+    setCategory(category);
+    setSubcategory(''); // Reset subcategory when category changes
+  };
+
+  const handleSubcategoryChange = (e) => {
+    const subcategory = e.target.value;
+    setSubcategory(subcategory);
   };
 
   return (
@@ -131,15 +161,40 @@ const AddProductPage = () => {
               onChange={handleImageUpload}
             />
           </div>
+
+          <div className="add-product-form-group">
+            <input
+              type="file"
+              name="imgurl5"
+              onChange={handleImageUpload}
+            />
+          </div>  
+        </div>
+        
+        <div className="add-product-form-row">
           <div className="add-product-form-group">
             <select
-              value={product.category}
-              onChange={(e) => setProduct({ ...product, category: e.target.value })}
+              value={category}
+              onChange={handleCategoryChange}
             >
-              <option disabled>Select Category</option>
+              <option selected disabled>Select Category</option>
               {categoryList.map((value, index) => (
                 <option key={index} value={value.name}>
                   {value.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="add-product-form-group">
+            <select
+              value={subcategory}
+              onChange={handleSubcategoryChange}
+              disabled={!category}
+            >
+              <option selected disabled>Select SubCategory</option>
+              {category && categoriesList[category]?.map((subcategory, index) => (
+                <option key={index} value={subcategory}>
+                  {subcategory}
                 </option>
               ))}
             </select>
@@ -154,27 +209,6 @@ const AddProductPage = () => {
             placeholder="Product Description"
             rows="5"
           />
-        </div>
-        
-        <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <input
-              type="number"
-              name="stars"
-              value={product.stars}
-              onChange={(e) => setProduct({ ...product, stars: e.target.value })}
-              placeholder="Stars"
-            />
-          </div>
-          <div className="add-product-form-group">
-            <input
-              type="number"
-              name="stock"
-              value={product.stock}
-              onChange={(e) => setProduct({ ...product, stock: e.target.value })}
-              placeholder="Stock"
-            />
-          </div>
         </div>
         
         <div className="add-product-form-group">
