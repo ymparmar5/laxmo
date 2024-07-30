@@ -1,15 +1,14 @@
 /* AddProductPage.css */
 
 .addproduct-container {
+    margin:  0rem 0rem 5rem 0rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f4f8;
 }
 
 .add-product-form-wrapper {
-    background-color: #ffffff;
+    background-color: #fff9f9;
     padding: 20px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

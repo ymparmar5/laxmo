@@ -47,6 +47,7 @@ const UpdateProductPage = () => {
         category: "",
         subcategory: "",
         description: "",
+        features:"",
         stars: "",
         stock: true,
         time: Timestamp.now(),
@@ -171,6 +172,29 @@ const UpdateProductPage = () => {
                         />
                     </div>
                 </div>
+                <div className="add-product-form-row">
+                    <div className="add-product-form-group">
+                        <input
+                            type="file"
+                            name="imgurl4"
+                            onChange={handleImageUpload}
+                        />
+                    </div>
+                    <div className="add-product-form-group">
+                        <input
+                            type="file"
+                            name="imgurl5"
+                            onChange={handleImageUpload}
+                        />
+                    </div>
+                    <div className="add-product-form-group">
+                        <input
+                            type="file"
+                            name="imgurl6"
+                            onChange={handleImageUpload}
+                        />
+                    </div>
+                </div>
 
                 <div className="add-product-form-row">
                     <div className="add-product-form-group">
@@ -207,7 +231,16 @@ const UpdateProductPage = () => {
                         value={product.description}
                         onChange={(e) => setProduct({ ...product, description: e.target.value })}
                         placeholder="Product Description"
-                        rows="5"
+                        rows="7"
+                    />
+                </div>
+                <div className="add-product-form-group">
+                    <textarea
+                        name="features"
+                        value={product.features}
+                        onChange={(e) => setProduct({ ...product, features: e.target.value })}
+                        placeholder="Product features"
+                        rows="7"
                     />
                 </div>
             

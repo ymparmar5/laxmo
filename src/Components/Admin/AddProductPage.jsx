@@ -47,8 +47,10 @@ const AddProductPage = () => {
     imgurl3: '',
     imgurl4: '',
     imgurl5: '',
+    imgurl6: '',
     category: '',
     description: '',
+    features: '',
     stars: '',
     stock: true,
     time: Timestamp.now(),
@@ -152,6 +154,31 @@ const AddProductPage = () => {
             />
           </div>
         </div>
+
+
+        <div className="add-product-form-row">
+          <div className="add-product-form-group">
+            <input
+              type="file"
+              name="imgurl4"
+              onChange={handleImageUpload}
+            />
+          </div>
+          <div className="add-product-form-group">
+            <input
+              type="file"
+              name="imgurl5"
+              onChange={handleImageUpload}
+            />
+          </div>
+          <div className="add-product-form-group">
+            <input
+              type="file"
+              name="imgurl6"
+              onChange={handleImageUpload}
+            />
+          </div>
+        </div>
         
  
         
@@ -191,7 +218,16 @@ const AddProductPage = () => {
             value={product.description}
             onChange={(e) => setProduct({ ...product, description: e.target.value })}
             placeholder="Product Description"
-            rows="5"
+            rows="7"
+          />
+        </div>
+        <div className="add-product-form-group">
+          <textarea
+            name="features"
+            value={product.features}
+            onChange={(e) => setProduct({ ...product, features: e.target.value })}
+            placeholder="features"
+            rows="7"
           />
         </div>
         
