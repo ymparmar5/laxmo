@@ -19,37 +19,25 @@ const initialCategoryList = [
 ];
 
 const initialCategoriesList = {
-  Agriculture: ["Agri Openwell", "Monoblock Pumps", "V-4 Pumps", "V-6 Pumps"],
-  "Electronic Control Pumps": [],
-  Industrial: [
-    "Boiler feed Pumps",
-    "Chemical Pumps",
-    "S.S Monoblock Pumps",
-    "Sewage & Drainage Pumps",
-    "SEWAGE PUMP / DEWATERING PUMP",
-    "Vertical Inline Pumps",
-    "Lawn Mover Machine",
-  ],
-  Machinary: [
-    "Air Compressor",
-    "High Pressure Washer Pumps",
-    "Petrol and Diesel Water Pumps",
-    "petrol engine",
-    "Piston Pumps",
-  ],
-  Others: [],
-  Pressure: [],
-  Residential: [
-    "Car Washer",
-    "Mini Sewage",
-    "Openwell Pumps",
-    "Pressure Pumps",
-    "Self Priming Pumps",
-  ],
-  Solar: [],
-  Sprinkler: [],
-  "Swimming Pool Pump": [],
-  "Vaccum Cleaner": [],
+  
+  Residential: ['Car Washer','Self Priming Pumps',  'Openwell Pumps','Pressure Pumps','Vaccume Cleaner', 'Mini Sewage Pump','pressure Tank','R.O. Water Pump', 'Pump Controller' ],
+
+  Agriculture: ['Agri Openwell', 'Monoblock Pumps', 'V-4 Pumps', 'V-6 Pumps',' Sewage Pump','Generator','Chain Saw','Swiming Pool Pump','Agriculture Hose Pipe'],
+
+   'Electronic Control Pumps': [],
+
+   Industrial: ['Boiler feed Pumps', 'Chemical Pumps', 'S.S Monoblock Pumps', 'Sewage & Drainage Pumps',  'Vertical Inline Pumps', 'Fire Fighting Pump', 'Welding Machine Pump', 'Chain Saw', 'Variable Frequncy Controller','Pressure Tank', 'Inverter Pump','Gear Pump',  'Lawn Mover Machine'],
+
+   Machinery: ['Air Compressor', 'High Pressure Washer Pumps', 'Gasoline Water Pump','HTP Pump', 'Bair Engine','Induction Motor', 'Welding Machine', 'Hose Pipe', 'Petrol and Diesel Water Pumps', 'petrol engine', 'Piston Pumps'],
+   
+   Accessories: ['Brass NRV','Brass Fireway','Brass Combo','Denefoss Switch','Presure Gauge','Float Switch','Pressure Switch',],
+   Pressure: [],
+   Solar: [],
+  
+   Sprinkler: [],
+   'Swimming Pool Pump': [],
+   'Vaccum Cleaner': []
+
 };
 
 const AddProductPage = () => {

@@ -10,6 +10,7 @@ function MyState({ children }) {
     const [getAllProduct, setGetAllProduct] = useState([]);
     const [getAllOrder, setGetAllOrder] = useState([]);
     const [getAllUser, setGetAllUser] = useState([]);
+    const [categories,setCategorie] = useState([]);
 
     const getAllProductFunction = () => {
         setLoading(true);
@@ -102,11 +103,12 @@ function MyState({ children }) {
             getAllOrderFunction,
             getAllOrder,
             OrderDelete,
-            getAllUser
+            getAllUser,
+            categories,
+            setCategorie,
         }}>
             {children}
         </MyContext.Provider>
     );
 }
-
 export default MyState;

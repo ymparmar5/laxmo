@@ -6,7 +6,7 @@ import '../Style/Shop.css';
 
 const Shop = () => {
     const navigate = useNavigate();
-    const { getAllProduct, loading } = useContext(myContext);
+    const { getAllProduct, loading, categories } = useContext(myContext);
     const cartItems = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
@@ -61,33 +61,23 @@ const Shop = () => {
     const totalProducts = filteredProducts.length;
     const totalPages = Math.ceil(totalProducts / productsPerPage);
 
-    const categories = {
-        Agriculture: ['Agri Openwell', 'Monoblock Pumps', 'V-4 Pumps', 'V-6 Pumps'],
-        'Electronic Control Pumps': [],
-        Industrial: ['Boiler feed Pumps', 'Chemical Pumps', 'S.S Monoblock Pumps', 'Sewage & Drainage Pumps', 'SEWAGE PUMP / DEWATERING PUMP', 'Vertical Inline Pumps', 'Lawn Mover Machine'],
-        Machinery: ['Air Compressor', 'High Pressure Washer Pumps', 'Petrol and Diesel Water Pumps', 'petrol engine', 'Piston Pumps'],
-        Others: [],
-        'Pressure': [],
-        Residential: ['Car Washer', 'Mini Sewage', 'Openwell Pumps', 'Pressure Pumps', 'Self Priming Pumps'],
-        Solar: [],
-        Sprinkler: [],
-        'Swimming Pool Pump': [],
-        'Vaccum Cleaner': []
-    };
+    // Use the categories context here
+    const category = categories;
+    console.log(category);
 
     return (
         <div className="shop-main-content">
             <div className="shop-sidebar">
                 <h2>Categories</h2>
                 <ul className="category-list">
-                    {Object.keys(categories).map((category, index) => (
+                    {Object.keys(category).map((categoryName, index) => (
                         <li key={index}>
-                            <div className={`category-item ${selectedCategory === category ? 'selected' : ''}`} onClick={() => handleCategoryClick(category)}>
-                                {category}
+                            <div className={`category-item ${selectedCategory === categoryName ? 'selected' : ''}`} onClick={() => handleCategoryClick(categoryName)}>
+                                {categoryName}
                             </div>
-                            {categories[category].length > 0 && (
+                            {category[categoryName].length > 0 && (
                                 <ul className="subcategory-list">
-                                    {categories[category].map((subcategory, subIndex) => (
+                                    {category[categoryName].map((subcategory, subIndex) => (
                                         <li key={subIndex} className="subcategory-item" onClick={() => handleSubcategoryClick(subcategory)}>
                                             {subcategory}
                                         </li>
