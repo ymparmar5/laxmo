@@ -36,33 +36,33 @@ const ProductInfo = () => {
         }
     };
 
-    const cartItems = useSelector((state) => state.cart);
-    const dispatch = useDispatch();
+    // const cartItems = useSelector((state) => state.cart);
+    // const dispatch = useDispatch();
 
-    const addCart = (item) => {
-        dispatch(addToCart(item));
-        toast.success("Add to cart");
-    };
+    // const addCart = (item) => {
+    //     dispatch(addToCart(item));
+    //     toast.success("Add to cart");
+    // };
 
-    const deleteCart = (item) => {
-        dispatch(deleteFromCart(item));
-        toast.success("Delete from cart");
-    };
+    // const deleteCart = (item) => {
+    //     dispatch(deleteFromCart(item));
+    //     toast.success("Delete from cart");
+    // };
 
-    const [quantity, setQuantity] = useState(1);
+    // const [quantity, setQuantity] = useState(1);
 
-    const handleQuantityChange = (e) => {
-        const value = Math.max(1, Math.min(99, Number(e.target.value)));
-        setQuantity(value);
-    };
+    // const handleQuantityChange = (e) => {
+    //     const value = Math.max(1, Math.min(99, Number(e.target.value)));
+    //     setQuantity(value);
+    // };
 
-    const decreaseQuantity = () => {
-        setQuantity(prev => Math.max(1, prev - 1));
-    };
+    // const decreaseQuantity = () => {
+    //     setQuantity(prev => Math.max(1, prev - 1));
+    // };
 
-    const increaseQuantity = () => {
-        setQuantity(prev => Math.min(99, prev + 1));
-    };
+    // const increaseQuantity = () => {
+    //     setQuantity(prev => Math.min(99, prev + 1));
+    // };
 
     useEffect(() => {
         getProductData();
@@ -101,22 +101,17 @@ const ProductInfo = () => {
                                     ))}
                                 </div> */}
                                 {/* <p className="product-price">₹ {product.price}</p> */}
+                          
                                 <div className="product-description">
-                                    <h2 className="description-title">Features:</h2>
+                                    <h2 className="description-title">specification:</h2>
                                     <ul>
-                                        {product.features.split('\n').map((feature, index) => (
-                                            <li key={index}>{feature}</li>
+                                        {product.specification.split('\n').map((specification, index) => (
+                                            <li key={index}>{specification}</li>
                                         ))}
                                     </ul>
                                 </div>
-                                <div className="product-description">
-                                    <h2 className="description-title">Description:</h2>
-                                    <ul>
-                                        {product.description.split('\n').map((desc, index) => (
-                                            <li key={index}>{desc}</li>
-                                        ))}
-                                    </ul>
-                                </div>
+                               
+
                                 {/* <div className="quantity-container">
                                     <button className="quantity-btn" onClick={decreaseQuantity}>-</button>
                                     <input type="number" className="quantity-input" value={quantity} onChange={handleQuantityChange} />
@@ -130,12 +125,82 @@ const ProductInfo = () => {
                                     )}
                                 </div> */}
                             </div>
+                            <div className="product-description-container">   </div>
+                         
+                        </div>
+                        <div>
+                            
                         </div>
                     </>
                 ) : (
                     <p>Product not found</p>
                 )}
             </div>
+            <div className="product-info-container">
+                {product ? (
+                    <>                  
+                        
+                        <div className="right-side">
+                            <div className="product-description-container">
+                              
+                                <div className="product-description">
+                                    <h2 className="description-title">specification:</h2>
+                                    <ul>
+                                        {product.specification.split('\n').map((specification, index) => (
+                                            <li key={index}>{specification}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                       
+                  </div>
+                            <div className="product-description-container">   </div>
+                         
+                        </div>
+                        <div>
+                            
+                        </div>
+                    </>
+                ) : (
+                    <p>Product not found</p>
+                )}
+            </div>
+            <div className="product-info-container">
+                {product ? (
+                    <>
+                            <div className="product-description-container">
+                             
+                                <div className="product-description">
+                                    <h2 className="description-title">Features:</h2>
+                                    <ul>
+                                        {product.features.split('\n').map((feature, index) => (
+                                            <li key={index}>{feature}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div className="product-description">
+                                    <h2 className="description-title">Description:</h2>
+                                    <ul>
+                                        {product.description.split('\n').map((description, index) => (
+                                            <li key={index}>{description}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                  
+                               
+
+                            </div>
+                         
+                   
+                        <div>
+                            
+                        </div>
+                    </>
+                ) : (
+                    <p>Product not found</p>
+                )}
+            </div>
+ 
+ 
         </section>
     );
 };

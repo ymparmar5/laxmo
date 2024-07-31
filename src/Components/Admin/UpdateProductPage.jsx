@@ -47,6 +47,7 @@ const UpdateProductPage = () => {
         category: "",
         subcategory: "",
         description: "",
+        specification: "",
         features:"",
         stars: "",
         stock: true,
@@ -225,15 +226,17 @@ const UpdateProductPage = () => {
                         </select>
                     </div>
                 </div>
+
                 <div className="add-product-form-group">
                     <textarea
-                        name="description"
-                        value={product.description}
-                        onChange={(e) => setProduct({ ...product, description: e.target.value })}
-                        placeholder="Product Description"
+                        name="specification"
+                        value={product.specification}
+                        onChange={(e) => setProduct({ ...product, specification: e.target.value })}
+                        placeholder="Product specification"
                         rows="7"
                     />
                 </div>
+
                 <div className="add-product-form-group">
                     <textarea
                         name="features"
@@ -243,6 +246,16 @@ const UpdateProductPage = () => {
                         rows="7"
                     />
                 </div>
+                <div className="add-product-form-group">
+                    <textarea
+                        name="description"
+                        value={product.description}
+                        onChange={(e) => setProduct({ ...product, description: e.target.value })}
+                        placeholder="Product Description"
+                        rows="7"
+                    />
+                </div>
+             
             
                 <div className="add-product-form-group">
                     <button

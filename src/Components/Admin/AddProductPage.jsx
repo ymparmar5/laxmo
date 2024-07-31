@@ -50,6 +50,7 @@ const AddProductPage = () => {
     imgurl6: '',
     category: '',
     description: '',
+    specification:'',
     features: '',
     stars: '',
     stock: true,
@@ -214,19 +215,30 @@ const AddProductPage = () => {
         
         <div className="add-product-form-group">
           <textarea
-            name="description"
-            value={product.description}
-            onChange={(e) => setProduct({ ...product, description: e.target.value })}
-            placeholder="Product Description"
-            rows="7"
-          />
-        </div>
-        <div className="add-product-form-group">
-          <textarea
             name="features"
             value={product.features}
             onChange={(e) => setProduct({ ...product, features: e.target.value })}
             placeholder="features"
+            rows="7"
+          />
+        </div>
+
+        <div className="add-product-form-group">
+          <textarea
+            name="specification"
+            value={product.description}
+            onChange={(e) => setProduct({ ...product, specification: e.target.value })}
+            placeholder="Product specification"
+            rows="7"
+          />
+        </div>
+
+        <div className="add-product-form-group">
+          <textarea
+            name="description"
+            value={product.description}
+            onChange={(e) => setProduct({ ...product, description: e.target.value })}
+            placeholder="Product Description"
             rows="7"
           />
         </div>
