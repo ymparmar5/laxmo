@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import MyContext from './myContext';
 import { collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
@@ -10,7 +9,7 @@ function MyState({ children }) {
     const [getAllProduct, setGetAllProduct] = useState([]);
     const [getAllOrder, setGetAllOrder] = useState([]);
     const [getAllUser, setGetAllUser] = useState([]);
-    const [categories,setCategorie] = useState([]);
+    const [categories, setCategorie] = useState([]);
 
     const getAllProductFunction = () => {
         setLoading(true);
@@ -22,6 +21,7 @@ function MyState({ children }) {
                     productArray.push({ ...doc.data(), id: doc.id });
                 });
                 setGetAllProduct(productArray);
+                extractCategories(productArray);
                 setLoading(false);
             });
             return unsubscribe;
@@ -29,6 +29,23 @@ function MyState({ children }) {
             console.error("Error fetching products: ", error);
             setLoading(false);
         }
+    };
+
+    const extractCategories = (products) => {
+        const categoryMap = {};
+        products.forEach(product => {
+            const { category } = product;
+            if (category) {
+                const [mainCategory, subCategory] = category.split('>');
+                if (!categoryMap[mainCategory]) {
+                    categoryMap[mainCategory] = [];
+                }
+                if (subCategory && !categoryMap[mainCategory].includes(subCategory)) {
+                    categoryMap[mainCategory].push(subCategory);
+                }
+            }
+        });
+        setCategorie(categoryMap);
     };
 
     const getAllOrderFunction = () => {
