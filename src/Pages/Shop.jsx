@@ -1,11 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import myContext from '../Context/myContext';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Style/Shop.css';
 
 const Shop = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const { getAllProduct, loading, categories } = useContext(myContext);
     const cartItems = useSelector((state) => state.cart);
     const dispatch = useDispatch();
@@ -14,6 +15,14 @@ const Shop = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedSubcategory, setSelectedSubcategory] = useState('');
     const productsPerPage = 12;
+
+    useEffect(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const category = queryParams.get('category');
+        if (category) {
+            setSelectedCategory(category);
+        }
+    }, [location.search]);
 
     const handleSort = (e) => {
         setSortOption(e.target.value);

@@ -63,7 +63,7 @@ const Category = () => {
     };
 
     const handleCategoryClick = (name) => {
-        navigate(`/category/${name}`);
+        navigate(`/shop?category=${name}`);
     };
 
     return (
