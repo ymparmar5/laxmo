@@ -1,7 +1,6 @@
 import HeroSection from '../Components/HeroSection';
 import Category from '../Components/Category';
 import HomeProductCard from '../Components/HomeProductCard';
-import HomeAbout from '../Components/HomeAbout';
 
 
 

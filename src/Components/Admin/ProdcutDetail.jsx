@@ -41,13 +41,14 @@ const ProductDetail = () => {
                             <th>S.No.</th>
                             <th>Image</th>
                             <th>Title</th>
-                            <th>Category</th>
+
+
                             <th colSpan="2">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {getAllProduct.map((item, index) => {
-                            const { id, title, price, category, date, imgurl1 } = item;
+                            const { id, title,  category,  imgurl1 } = item;
                             return (
                                 <tr key={index} className="text-indigo-300">
                                     <td>{index + 1}</td>
@@ -58,7 +59,7 @@ const ProductDetail = () => {
                                     </td>
                                     <td>{title}</td>
                               
-                                    <td>{category}</td>
+                                    
                                     <td className="actions">
                                         <button
                                             className="edit"
