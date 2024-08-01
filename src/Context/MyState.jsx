@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 import MyContext from './myContext';
-import { collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc } from 'firebase/firestore';
 import { fireDB } from "../FireBase/FireBaseConfig";
 import toast from 'react-hot-toast';
 
 function MyState({ children }) {
     const [loading, setLoading] = useState(false);
     const [getAllProduct, setGetAllProduct] = useState([]);
-    const [getAllOrder, setGetAllOrder] = useState([]);
-    const [getAllUser, setGetAllUser] = useState([]);
-    const [categories, setCategorie] = useState([]);
+    const [categories, setCategorie] = useState({});
 
     const getAllProductFunction = () => {
         setLoading(true);
@@ -34,80 +32,45 @@ function MyState({ children }) {
     const extractCategories = (products) => {
         const categoryMap = {};
         products.forEach(product => {
-            const { category } = product;
-            if (category) {
-                const [mainCategory, subCategory] = category.split('>');
-                if (!categoryMap[mainCategory]) {
-                    categoryMap[mainCategory] = [];
+            const { category1, subcategory1, category2, subcategory2, category3, subcategory3, category4, subcategory4 } = product;
+            [category1, category2, category3, category4].forEach((cat, index) => {
+                if (cat) {
+                    if (!categoryMap[cat]) {
+                        categoryMap[cat] = new Set();
+                    }
+                    const subcat = product[`subcategory${index + 1}`];
+                    if (subcat) {
+                        categoryMap[cat].add(subcat);
+                    }
                 }
-                if (subCategory && !categoryMap[mainCategory].includes(subCategory)) {
-                    categoryMap[mainCategory].push(subCategory);
-                }
-            }
+            });
         });
-        setCategorie(categoryMap);
+        const finalCategories = {};
+        for (let [category, subcategories] of Object.entries(categoryMap)) {
+            finalCategories[category] = Array.from(subcategories);
+        }
+        setCategorie(finalCategories);
     };
 
-    const getAllOrderFunction = () => {
-        setLoading(true);
-        try {
-            const q = query(collection(fireDB, 'order'), orderBy('time'));
-            const unsubscribe = onSnapshot(q, (querySnapshot) => {
-                const orderArray = [];
-                querySnapshot.forEach((doc) => {
-                    orderArray.push({ ...doc.data(), id: doc.id });
-                });
-                setGetAllOrder(orderArray);
-                setLoading(false);
-            });
-            return unsubscribe;
-        } catch (error) {
-            console.error('Error fetching orders:', error);
-            setLoading(false);
-        }
+    const addNewCategory = (newCategory) => {
+        setCategorie((prevCategories) => ({
+            ...prevCategories,
+            [newCategory]: []
+        }));
     };
 
-    const OrderDelete = async (id) => {
-        setLoading(true);
-        try {
-            await deleteDoc(doc(fireDB, 'order', id));
-            toast.success('Order Deleted successfully');
-            getAllOrderFunction();
-        } catch (error) {
-            console.error('Error deleting order:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const getAllUserFunction = () => {
-        setLoading(true);
-        try {
-            const q = query(collection(fireDB, 'user'), orderBy('time'));
-            const unsubscribe = onSnapshot(q, (querySnapshot) => {
-                const userArray = [];
-                querySnapshot.forEach((doc) => {
-                    userArray.push({ ...doc.data(), id: doc.id });
-                });
-                setGetAllUser(userArray);
-                setLoading(false);
-            });
-            return unsubscribe;
-        } catch (error) {
-            console.error('Error fetching users:', error);
-            setLoading(false);
-        }
+    const addNewSubcategory = (category, newSubcategory) => {
+        setCategorie((prevCategories) => ({
+            ...prevCategories,
+            [category]: [...prevCategories[category], newSubcategory]
+        }));
     };
 
     useEffect(() => {
         const unsubscribeProducts = getAllProductFunction();
-        const unsubscribeOrders = getAllOrderFunction();
-        const unsubscribeUsers = getAllUserFunction();
 
         return () => {
             if (unsubscribeProducts) unsubscribeProducts();
-            if (unsubscribeOrders) unsubscribeOrders();
-            if (unsubscribeUsers) unsubscribeUsers();
         };
     }, []);
 
@@ -116,16 +79,13 @@ function MyState({ children }) {
             loading,
             setLoading,
             getAllProduct,
-            getAllProductFunction,
-            getAllOrderFunction,
-            getAllOrder,
-            OrderDelete,
-            getAllUser,
             categories,
-            setCategorie,
+            addNewCategory,
+            addNewSubcategory,
         }}>
             {children}
         </MyContext.Provider>
     );
 }
+
 export default MyState;

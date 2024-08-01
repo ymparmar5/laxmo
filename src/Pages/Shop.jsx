@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import myContext from '../Context/myContext';
 import { useDispatch, useSelector } from 'react-redux';
@@ -42,12 +42,11 @@ const Shop = () => {
     });
 
     const filteredProducts = sortedProducts.filter(product => {
-        const productCategories = product.category.split('|').map(cat => cat.trim());
         if (selectedSubcategory) {
-            return productCategories.some(cat => cat.includes(selectedSubcategory));
+            return product.subcategory1 === selectedSubcategory || product.subcategory2 === selectedSubcategory || product.subcategory3 === selectedSubcategory || product.subcategory4 === selectedSubcategory;
         }
         if (selectedCategory) {
-            return productCategories.some(cat => cat.split('>').some(subCat => subCat.trim() === selectedCategory));
+            return product.category1 === selectedCategory || product.category2 === selectedCategory || product.category3 === selectedCategory || product.category4 === selectedCategory;
         }
         return true;
     });
@@ -61,23 +60,19 @@ const Shop = () => {
     const totalProducts = filteredProducts.length;
     const totalPages = Math.ceil(totalProducts / productsPerPage);
 
-    // Use the categories context here
-    const category = categories;
-    console.log(category);
-
     return (
         <div className="shop-main-content">
             <div className="shop-sidebar">
                 <h2>Categories</h2>
                 <ul className="category-list">
-                    {Object.keys(category).map((categoryName, index) => (
+                    {Object.keys(categories).map((categoryName, index) => (
                         <li key={index}>
                             <div className={`category-item ${selectedCategory === categoryName ? 'selected' : ''}`} onClick={() => handleCategoryClick(categoryName)}>
                                 {categoryName}
                             </div>
-                            {category[categoryName].length > 0 && (
+                            {categories[categoryName].length > 0 && (
                                 <ul className="subcategory-list">
-                                    {category[categoryName].map((subcategory, subIndex) => (
+                                    {categories[categoryName].map((subcategory, subIndex) => (
                                         <li key={subIndex} className="subcategory-item" onClick={() => handleSubcategoryClick(subcategory)}>
                                             {subcategory}
                                         </li>

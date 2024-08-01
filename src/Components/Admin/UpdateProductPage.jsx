@@ -3,282 +3,270 @@ import { useContext, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fireDB } from "../../FireBase/FireBaseConfig";
 import toast from "react-hot-toast";
-import Loader from "../Loader";
-import myContext from "../../Context/myContext";
+import myContext from '../../Context/myContext';
+import "../../Style/UpdateProductPage.css";
 import { uploadImage } from '../Admin/Cloudnary'; // Import the Cloudinary upload function
-import "../../Style/AddProductPage.css";
-
-const categoryList = [
-    { name: 'Uncategorized' },
-    { name: 'Residential' },
-    { name: 'Pressure system' },
-    { name: 'Agriculture' },
-    { name: 'Industrial' },
-    { name: 'Machinary' },
-    { name: 'Solar' },
-];
-
-const subcategoryList = {
-    Residential: ['Car Washer','Self Priming Pumps',  'Openwell Pumps','Pressure Pumps','Vaccume Cleaner', 'Mini Sewage Pump','pressure Tank','R.O. Water Pump', 'Pump Controller' ],
-
-     Agriculture: ['Agri Openwell', 'Monoblock Pumps', 'V-4 Pumps', 'V-6 Pumps',' Sewage Pump','Generator','Chain Saw','Swiming Pool Pump','Agriculture Hose Pipe'],
-
-    'Electronic Control Pumps': [],
-
-    Industrial: ['Boiler feed Pumps', 'Chemical Pumps', 'S.S Monoblock Pumps', 'Sewage & Drainage Pumps',  'Vertical Inline Pumps', 'Fire Fighting Pump', 'Welding Machine Pump', 'Chain Saw', 'Variable Frequncy Controller','Pressure Tank', 'Inverter Pump','Gear Pump',  'Lawn Mover Machine'],
-
-    Machinery: ['Air Compressor', 'High Pressure Washer Pumps', 'Gasoline Water Pump','HTP Pump', 'Bair Engine','Induction Motor', 'Welding Machine', 'Hose Pipe', 'Petrol and Diesel Water Pumps', 'petrol engine', 'Piston Pumps'],
-    
-    Accessories: ['Brass NRV','Brass Fireway','Brass Combo','Denefoss Switch','Presure Gauge','Float Switch','Pressure Switch',],
-    Pressure: [],
-    Solar: [],
-   
-    Sprinkler: [],
-    'Swimming Pool Pump': [],
-    'Vaccum Cleaner': []
-
-};
 
 const UpdateProductPage = () => {
-    const context = useContext(myContext);
-    const { loading, setLoading, getAllProductFunction } = context;
-
-    const navigate = useNavigate();
     const { id } = useParams();
+    const { categories, addNewCategory, addNewSubcategory } = useContext(myContext);
+    const navigate = useNavigate();
+    const [product, setProduct] = useState(null);
+    const [newCategory, setNewCategory] = useState("");
+    const [newSubcategory, setNewSubcategory] = useState("");
+    const [selectedCategoryForSub, setSelectedCategoryForSub] = useState("");
 
-    const [product, setProduct] = useState({
-        title: "",
-        price: "",
-        salePrice: "",
-        imgurl1: "",
-        imgurl2: "",
-        imgurl3: "",
-        imgurl4: "",
-        imgurl5: "",
-        category: "",
-        subcategory: "",
-        description: "",
-        specification: "",
-        features:"",
-        stars: "",
-        stock: true,
-        time: Timestamp.now(),
-        date: new Date().toLocaleString("en-US", {
-            month: "short",
-            day: "2-digit",
-            year: "numeric",
-        })
-    });
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const docRef = doc(fireDB, "products", id);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setProduct(docSnap.data());
+                } else {
+                    toast.error("No such product!");
+                    navigate("/AdminDashboard");
+                }
+            } catch (error) {
+                console.error("Error fetching product: ", error);
+                toast.error("Failed to fetch product.");
+            }
+        };
+        fetchProduct();
+    }, [id, navigate]);
 
-    const [category, setCategory] = useState('');
-    const [subcategory, setSubcategory] = useState('');
+    const updateProduct = async () => {
+        try {
+            const docRef = doc(fireDB, "products", id);
+            await setDoc(docRef, {
+                ...product,
+                time: Timestamp.now(),
+                date: new Date().toLocaleString("en-US", {
+                  month: "short",
+                  day: "2-digit",
+                  year: "numeric",
+                }),
+            });
+            toast.success("Product updated successfully!");
+            navigate("/AdminDashboard");
+        } catch (error) {
+            console.error("Error updating product: ", error);
+            toast.error("Failed to update product.");
+        }
+    };
 
     const handleImageUpload = async (e) => {
         const file = e.target.files[0];
         if (file) {
-            try {
-                const url = await uploadImage(file);
-                setProduct((prevProduct) => ({
-                    ...prevProduct,
-                    [e.target.name]: url,
-                }));
-            } catch (error) {
-                toast.error('Image upload failed');
-            }
+          try {
+            const url = await uploadImage(file);
+            setProduct((prevProduct) => ({
+              ...prevProduct,
+              [e.target.name]: url,
+            }));
+          } catch (error) {
+            toast.error('Image upload failed');
+          }
         }
     };
 
-    const getSingleProductFunction = async () => {
-        setLoading(true);
-        try {
-            const productTemp = await getDoc(doc(fireDB, "products", id));
-            const productData = productTemp.data();
-            setProduct({
-                ...productData,
-                date: productData?.date,
-                time: productData?.time,
-            });
-            setCategory(productData?.category?.split('>')[0] || '');
-            setSubcategory(productData?.category?.split('>')[1] || '');
-            setLoading(false);
-        } catch (error) {
-            console.log(error);
-            setLoading(false);
+    const handleCategoryChange = (index, value) => {
+        const updatedProduct = { ...product, [`category${index}`]: value, [`subcategory${index}`]: '' };
+        setProduct(updatedProduct);
+    };
+
+    const handleSubcategoryChange = (index, value) => {
+        setProduct({ ...product, [`subcategory${index}`]: value });
+    };
+
+    const handleAddCategory = () => {
+        if (newCategory) {
+            addNewCategory(newCategory);
+            toast.success(`Category "${newCategory}" added successfully!`);
+            setNewCategory("");
         }
     };
 
-    const updateProduct = async () => {
-        if (product.title === '' || product.imgurl1 === '' || category === '' || product.description === '') {
-            return toast.error('All fields are required');
-        }
-
-        const combinedCategory = `${category}${subcategory ? '>' + subcategory : ''}`;
-
-        setLoading(true);
-        try {
-            await setDoc(doc(fireDB, 'products', id), { ...product, category: combinedCategory });
-            toast.success("Product updated successfully");
-            getAllProductFunction();
-            setLoading(false);
-            navigate('/admin');
-        } catch (error) {
-            console.log(error);
-            setLoading(false);
-            toast.error("Update product failed");
+    const handleAddSubcategory = () => {
+        if (selectedCategoryForSub && newSubcategory) {
+            addNewSubcategory(selectedCategoryForSub, newSubcategory);
+            toast.success(`Subcategory "${newSubcategory}" added to "${selectedCategoryForSub}" successfully!`);
+            setNewSubcategory("");
+            setSelectedCategoryForSub("");
         }
     };
-
-    const handleCategoryChange = (e) => {
-        const selectedCategory = e.target.value;
-        setCategory(selectedCategory);
-        setSubcategory(''); // Reset subcategory when category changes
-    };
-
-    const handleSubcategoryChange = (e) => {
-        const selectedSubcategory = e.target.value;
-        setSubcategory(selectedSubcategory);
-    };
-
-    useEffect(() => {
-        getSingleProductFunction();
-    }, []);
 
     return (
-        <div className="addproduct-container">
-            {loading && <Loader className="loader" />}
-            <div className="add-product-form-wrapper">
-                <div className="form-header">
-                    <h2>Update Product</h2>
-                </div>
-                <div className="add-product-form-row">
-                    <div className="add-product-form-group">
+        product && (
+            <div className="update-product-container">
+                <div className="update-product-form-wrapper">
+                    <div className="form-header">
+                        <h2>Update Product</h2>
+                    </div>
+                    <div className="update-product-form">
+                        <div className="update-product-form-row">
+                            <div className="update-product-form-group">
+                                <input
+                                    type="text"
+                                    placeholder="Title"
+                                    value={product.title}
+                                    onChange={(e) => setProduct({ ...product, title: e.target.value })}
+                                />
+                            </div>
+                        </div>
+                        <div className="update-product-form-row">
+                            <div className="update-product-form-group">
+                                <textarea
+                                    placeholder="Description"
+                                    value={product.description}
+                                    onChange={(e) => setProduct({ ...product, description: e.target.value })}
+                                />
+                            </div>
+                        </div>
+                        <div className="update-product-form-row">
+                            <div className="update-product-form-group">
+                                <input
+                                    type="number"
+                                    placeholder="Price"
+                                    value={product.price}
+                                    onChange={(e) => setProduct({ ...product, price: e.target.value })}
+                                />
+                            </div>
+                        </div>
+                        {[1, 2, 3, 4].map((index) => (
+                            <div key={index} className="category-select">
+                                <div className="update-product-form-group">
+                                    <select
+                                        value={product[`category${index}`]}
+                                        onChange={(e) => handleCategoryChange(index, e.target.value)}
+                                    >
+                                        <option value="">Select Category {index}</option>
+                                        {Object.keys(categories).map((category) => (
+                                            <option key={category} value={category}>
+                                                {category}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="update-product-form-group">
+                                    <select
+                                        value={product[`subcategory${index}`]}
+                                        onChange={(e) => handleSubcategoryChange(index, e.target.value)}
+                                        disabled={!product[`category${index}`]}
+                                    >
+                                        <option value="">Select Subcategory {index}</option>
+                                        {product[`category${index}`] &&
+                                            categories[product[`category${index}`]].map((subcategory) => (
+                                                <option key={subcategory} value={subcategory}>
+                                                    {subcategory}
+                                                </option>
+                                            ))}
+                                    </select>
+                                </div>
+                            </div>
+                        ))}
+                        <div className="update-product-form-row">
+                            <div className="update-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl1"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
+                            <div className="update-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl2"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
+                            <div className="update-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl3"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
+                        </div>
+                        <div className="update-product-form-row">
+                            <div className="update-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl4"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
+                            <div className="update-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl5"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
+                            <div className="update-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl6"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
+                        </div>
+                        <div className="update-product-form-group">
+                            <textarea
+                                name="specification"
+                                value={product.specification}
+                                onChange={(e) => setProduct({ ...product, specification: e.target.value })}
+                                placeholder="Product specification"
+                                rows="2"
+                            />
+                        </div>
+                        <div className="update-product-form-group">
+                            <textarea
+                                name="features"
+                                value={product.features}
+                                onChange={(e) => setProduct({ ...product, features: e.target.value })}
+                                placeholder="Product Features"
+                                rows="3"
+                            />
+                        </div>
+                        <div className="update-product-form-group">
+                            <button type="button" onClick={updateProduct}>Update Product</button>
+                        </div>
+                    </div>
+                    <div className="add-category-section">
+                        <h3>Add New Category</h3>
                         <input
                             type="text"
-                            name="title"
-                            value={product.title}
-                            onChange={(e) => setProduct({ ...product, title: e.target.value })}
-                            placeholder="Product Title"
+                            placeholder="New Category"
+                            value={newCategory}
+                            onChange={(e) => setNewCategory(e.target.value)}
                         />
+                        <button onClick={handleAddCategory}>Add Category</button>
                     </div>
-                </div>
-                <div className="add-product-form-row">
-                    <div className="add-product-form-group">
-                        <input
-                            type="file"
-                            name="imgurl1"
-                            onChange={handleImageUpload}
-                        />
-                    </div>
-                    <div className="add-product-form-group">
-                        <input
-                            type="file"
-                            name="imgurl2"
-                            onChange={handleImageUpload}
-                        />
-                    </div>
-                    <div className="add-product-form-group">
-                        <input
-                            type="file"
-                            name="imgurl3"
-                            onChange={handleImageUpload}
-                        />
-                    </div>
-                </div>
-                <div className="add-product-form-row">
-                    <div className="add-product-form-group">
-                        <input
-                            type="file"
-                            name="imgurl4"
-                            onChange={handleImageUpload}
-                        />
-                    </div>
-                    <div className="add-product-form-group">
-                        <input
-                            type="file"
-                            name="imgurl5"
-                            onChange={handleImageUpload}
-                        />
-                    </div>
-                    <div className="add-product-form-group">
-                        <input
-                            type="file"
-                            name="imgurl6"
-                            onChange={handleImageUpload}
-                        />
-                    </div>
-                </div>
-
-                <div className="add-product-form-row">
-                    <div className="add-product-form-group">
+                    <div className="add-subcategory-section">
+                        <h3>Add New Subcategory</h3>
                         <select
-                            value={category}
-                            onChange={handleCategoryChange}
+                            value={selectedCategoryForSub}
+                            onChange={(e) => setSelectedCategoryForSub(e.target.value)}
                         >
-                            <option disabled>Select Product Category</option>
-                            {categoryList.map((value, index) => (
-                                <option key={index} value={value.name}>
-                                    {value.name}
+                            <option value="">Select Category</option>
+                            {Object.keys(categories).map((category) => (
+                                <option key={category} value={category}>
+                                    {category}
                                 </option>
                             ))}
                         </select>
+                        <input
+                            type="text"
+                            placeholder="New Subcategory"
+                            value={newSubcategory}
+                            onChange={(e) => setNewSubcategory(e.target.value)}
+                        />
+                        <button onClick={handleAddSubcategory}>Add Subcategory</button>
                     </div>
-                    <div className="add-product-form-group">
-                        <select
-                            value={subcategory}
-                            onChange={handleSubcategoryChange}
-                            disabled={!category}
-                        >
-                            <option disabled>Select SubCategory</option>
-                            {category && subcategoryList[category]?.map((value, index) => (
-                                <option key={index} value={value}>
-                                    {value}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
-
-                <div className="add-product-form-group">
-                    <textarea
-                        name="specification"
-                        value={product.specification}
-                        onChange={(e) => setProduct({ ...product, specification: e.target.value })}
-                        placeholder="Product specification"
-                        rows="7"
-                    />
-                </div>
-
-                <div className="add-product-form-group">
-                    <textarea
-                        name="features"
-                        value={product.features}
-                        onChange={(e) => setProduct({ ...product, features: e.target.value })}
-                        placeholder="Product features"
-                        rows="7"
-                    />
-                </div>
-                <div className="add-product-form-group">
-                    <textarea
-                        name="description"
-                        value={product.description}
-                        onChange={(e) => setProduct({ ...product, description: e.target.value })}
-                        placeholder="Product Description"
-                        rows="7"
-                    />
-                </div>
-             
-            
-                <div className="add-product-form-group">
-                    <button
-                        onClick={updateProduct}
-                        type="button"
-                        className="add-product-submit-btn"
-                    >
-                        Update Product
-                    </button>
                 </div>
             </div>
-        </div>
+        )
     );
 };
 

@@ -7,8 +7,7 @@ import Loader from "../Components/Loader";
 import "../Style/ProductInfo.css";
 
 const ProductInfo = () => {
-  const context = useContext(myContext);
-  const { loading, setLoading } = context;
+  const { loading, setLoading } = useContext(myContext);
   const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState("");
 
@@ -20,11 +19,10 @@ const ProductInfo = () => {
     try {
       const productTemp = await getDoc(doc(fireDB, "products", id));
       if (productTemp.exists()) {
-        console.log("Product Data: ", productTemp.data()); // Debugging log
         setProduct({ ...productTemp.data(), id: productTemp.id });
         setMainImage(productTemp.data().imgurl1); // Set main image initially
       } else {
-        console.log("No such document!");
+        console.log("No such Product!");
       }
       setLoading(false);
     } catch (error) {
@@ -35,7 +33,7 @@ const ProductInfo = () => {
 
   useEffect(() => {
     getProductData();
-  }, []);
+  }, [id]);
 
   if (loading) {
     return (

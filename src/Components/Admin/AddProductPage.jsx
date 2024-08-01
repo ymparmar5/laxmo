@@ -3,403 +3,255 @@ import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { fireDB } from "../../FireBase/FireBaseConfig";
 import { useNavigate } from "react-router";
-import myContext from "../../Context/myContext";
-import Loader from "../Loader";
-import { uploadImage } from "../Admin/Cloudnary"; // Import the Cloudinary upload function
+import myContext from '../../Context/myContext';
 import "../../Style/AddProductPage.css";
-
-const initialCategoryList = [
-  { name: "Uncategorized" },
-  { name: "Residential" },
-  { name: "Pressure" },
-  { name: "Agriculture" },
-  { name: "Industrial" },
-  { name: "Machinary" },
-  { name: "Solar" },
-];
-
-const initialCategoriesList = {
-  
-  Residential: ['Car Washer','Self Priming Pumps',  'Openwell Pumps','Pressure Pumps','Vaccume Cleaner', 'Mini Sewage Pump','pressure Tank','R.O. Water Pump', 'Pump Controller' ],
-
-  Agriculture: ['Agri Openwell', 'Monoblock Pumps', 'V-4 Pumps', 'V-6 Pumps',' Sewage Pump','Generator','Chain Saw','Swiming Pool Pump','Agriculture Hose Pipe'],
-
-   'Electronic Control Pumps': [],
-
-   Industrial: ['Boiler feed Pumps', 'Chemical Pumps', 'S.S Monoblock Pumps', 'Sewage & Drainage Pumps',  'Vertical Inline Pumps', 'Fire Fighting Pump', 'Welding Machine Pump', 'Chain Saw', 'Variable Frequncy Controller','Pressure Tank', 'Inverter Pump','Gear Pump',  'Lawn Mover Machine'],
-
-   Machinery: ['Air Compressor', 'High Pressure Washer Pumps', 'Gasoline Water Pump','HTP Pump', 'Bair Engine','Induction Motor', 'Welding Machine', 'Hose Pipe', 'Petrol and Diesel Water Pumps', 'petrol engine', 'Piston Pumps'],
-   
-   Accessories: ['Brass NRV','Brass Fireway','Brass Combo','Denefoss Switch','Presure Gauge','Float Switch','Pressure Switch',],
-   Pressure: [],
-   Solar: [],
-  
-   Sprinkler: [],
-   'Swimming Pool Pump': [],
-   'Vaccum Cleaner': []
-
-};
+import { uploadImage } from '../Admin/Cloudnary'; // Import the Cloudinary upload function
 
 const AddProductPage = () => {
-  const context = useContext(myContext);
-  const { loading, setLoading } = context;
-  const navigate = useNavigate();
+    const { categories, addNewCategory, addNewSubcategory } = useContext(myContext);
+    const navigate = useNavigate();
+    const [product, setProduct] = useState({
+        title: "",
+        imgurl1: "",
+        imgurl2: "",
+        imgurl3: "",
+        imgurl4: "",
+        imgurl5: "",
+        category1: "",
+        subcategory1: "",
+        category2: "",
+        subcategory2: "",
+        category3: "",
+        subcategory3: "",
+        category4: "",
+        subcategory4: "",
+        description: "",
+        specification: "",
+        features:"",
+        time: Timestamp.now(),
+        date: new Date().toLocaleString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric",
+        }),
+    });
+    const [newCategory, setNewCategory] = useState("");
+    const [newSubcategory, setNewSubcategory] = useState("");
+    const [selectedCategoryForSub, setSelectedCategoryForSub] = useState("");
 
-  const [product, setProduct] = useState({
-    title: "",
-    price: "",
-    salePrice: "",
-    imgurl1: "",
-    imgurl2: "",
-    imgurl3: "",
-    imgurl4: "",
-    imgurl5: "",
-    imgurl6: "",
-    category: "",
-    description: "",
-    specification: "",
-    features: "",
-    stars: "",
-    stock: true,
-    time: Timestamp.now(),
-    date: new Date().toLocaleString("en-US", {
-      month: "short",
-      day: "2-digit",
-      year: "numeric",
-    }),
-  });
-
-  const [category, setCategory] = useState("");
-  const [subcategory, setSubcategory] = useState("");
-  const [newCategory, setNewCategory] = useState("");
-  const [newSubcategory, setNewSubcategory] = useState("");
-  const [categoryList, setCategoryList] = useState(initialCategoryList);
-  const [categoriesList, setCategoriesList] = useState(initialCategoriesList);
-
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      try {
-        const url = await uploadImage(file);
-        setProduct((prevProduct) => ({
-          ...prevProduct,
-          [e.target.name]: url,
-        }));
-      } catch (error) {
-        toast.error("Image upload failed");
-      }
-    }
-  };
-
-  const AddProductPageFunction = async () => {
-    if (
-      product.title === "" ||
-      product.imgurl1 === "" ||
-      category === "" ||
-      product.description === ""
-    ) {
-      return toast.error("All fields are required");
-    }
-
-    const combinedCategory = `${category}${
-      subcategory ? ">" + subcategory : ""
-    }`;
-
-    setLoading(true);
-    try {
-      const productRef = collection(fireDB, "products");
-      await addDoc(productRef, { ...product, category: combinedCategory });
-      toast.success("Product added successfully");
-      navigate("/admin");
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-      toast.error("Add product failed");
-    }
-  };
-
-  const handleCategoryChange = (e) => {
-    const category = e.target.value;
-    setCategory(category);
-    setSubcategory("");
-  };
-
-  const handleSubcategoryChange = (e) => {
-    const subcategory = e.target.value;
-    setSubcategory(subcategory);
-  };
-
-  const handleAddCategory = () => {
-    if (newCategory && !categoryList.find((cat) => cat.name === newCategory)) {
-      setCategoryList([...categoryList, { name: newCategory }]);
-      setCategoriesList({ ...categoriesList, [newCategory]: [] });
-      setNewCategory("");
-    }
-  };
-
-  const handleAddSubcategory = () => {
-    if (
-      newSubcategory &&
-      category &&
-      !categoriesList[category]?.includes(newSubcategory)
-    ) {
-      const updatedCategories = {
-        ...categoriesList,
-        [category]: [...categoriesList[category], newSubcategory],
-      };
-      setCategoriesList(updatedCategories);
-      setNewSubcategory("");
-    }
-  };
-
-  const handleDeleteCategory = (categoryToDelete) => {
-    setCategoryList(
-      categoryList.filter((cat) => cat.name !== categoryToDelete)
-    );
-    const updatedCategories = { ...categoriesList };
-    delete updatedCategories[categoryToDelete];
-    setCategoriesList(updatedCategories);
-  };
-
-  const handleDeleteSubcategory = (subcategoryToDelete) => {
-    const updatedSubcategories = categoriesList[category].filter(
-      (sub) => sub !== subcategoryToDelete
-    );
-    const updatedCategories = {
-      ...categoriesList,
-      [category]: updatedSubcategories,
+    const addProduct = async () => {
+        try {
+            await addDoc(collection(fireDB, "products"), product);
+            toast.success("Product added successfully!");
+            navigate("/AdminDashboard");
+        } catch (error) {
+            console.error("Error adding product: ", error);
+            toast.error("Failed to add product.");
+        }
     };
-    setCategoriesList(updatedCategories);
-  };
+    
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          try {
+            const url = await uploadImage(file);
+            setProduct((prevProduct) => ({
+              ...prevProduct,
+              [e.target.name]: url,
+            }));
+          } catch (error) {
+            toast.error('Image upload failed');
+          }
+        }
+    };
 
-  return (
-    <div className="addproduct-container">
-      {loading && <Loader className="loader" />}
-      <div className="add-product-form-wrapper">
-        <div className="form-header">
-          <h2>Add Product</h2>
+    const handleCategoryChange = (index, value) => {
+        const updatedProduct = { ...product, [`category${index}`]: value, [`subcategory${index}`]: '' };
+        setProduct(updatedProduct);
+    };
+
+    const handleSubcategoryChange = (index, value) => {
+        setProduct({ ...product, [`subcategory${index}`]: value });
+    };
+
+    const handleAddCategory = () => {
+        if (newCategory) {
+            addNewCategory(newCategory);
+            toast.success(`Category "${newCategory}" added successfully!`);
+            setNewCategory("");
+        }
+    };
+
+    const handleAddSubcategory = () => {
+        if (selectedCategoryForSub && newSubcategory) {
+            addNewSubcategory(selectedCategoryForSub, newSubcategory);
+            toast.success(`Subcategory "${newSubcategory}" added to "${selectedCategoryForSub}" successfully!`);
+            setNewSubcategory("");
+            setSelectedCategoryForSub("");
+        }
+    };
+
+    return (
+        <div className="addproduct-container">
+            <div className="add-product-form-wrapper">
+                <div className="form-header">
+                    <h2>Add Product</h2>
+                </div>
+                <div className="add-product-form">
+                    <div className="add-product-form-row">
+                        <div className="add-product-form-group">
+                            <input
+                                type="text"
+                                placeholder="Title"
+                                value={product.title}
+                                onChange={(e) => setProduct({ ...product, title: e.target.value })}
+                            />
+                        </div>
+                    </div>
+                    <div className="add-product-form-row">
+                        <div className="add-product-form-group">
+                            <textarea
+                                placeholder="Description"
+                                value={product.description}
+                                onChange={(e) => setProduct({ ...product, description: e.target.value })}
+                            />
+                        </div>
+                    </div>
+             
+                    {[1, 2, 3, 4].map((index) => (
+                        <div key={index} className="category-select">
+                            <div className="add-product-form-group">
+                                <select
+                                    value={product[`category${index}`]}
+                                    onChange={(e) => handleCategoryChange(index, e.target.value)}
+                                >
+                                    <option value="">Select Category {index}</option>
+                                    {Object.keys(categories).map((category) => (
+                                        <option key={category} value={category}>
+                                            {category}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="add-product-form-group">
+                                <select
+                                    value={product[`subcategory${index}`]}
+                                    onChange={(e) => handleSubcategoryChange(index, e.target.value)}
+                                    disabled={!product[`category${index}`]}
+                                >
+                                    <option value="">Select Subcategory {index}</option>
+                                    {product[`category${index}`] &&
+                                        categories[product[`category${index}`]].map((subcategory) => (
+                                            <option key={subcategory} value={subcategory}>
+                                                {subcategory}
+                                            </option>
+                                        ))}
+                                </select>
+                            </div>
+                        </div>
+                    ))}
+                    <div className="add-product-form-row">
+                        <div className="add-product-form-group">
+                            <input
+                                type="file"
+                                name="imgurl1"
+                                onChange={handleImageUpload}
+                            />
+                        </div>
+                        <div className="add-product-form-group">
+                            <input
+                                type="file"
+                                name="imgurl2"
+                                onChange={handleImageUpload}
+                            />
+                        </div>
+                        <div className="add-product-form-group">
+                            <input
+                                type="file"
+                                name="imgurl3"
+                                onChange={handleImageUpload}
+                            />
+                        </div>
+                    </div>
+                    <div className="add-product-form-row">
+                        <div className="add-product-form-group">
+                            <input
+                                type="file"
+                                name="imgurl4"
+                                onChange={handleImageUpload}
+                            />
+                        </div>
+                        <div className="add-product-form-group">
+                            <input
+                                type="file"
+                                name="imgurl5"
+                                onChange={handleImageUpload}
+                            />
+                        </div>
+                        <div className="add-product-form-group">
+                            <input
+                                type="file"
+                                name="imgurl6"
+                                onChange={handleImageUpload}
+                            />
+                        </div>
+                    </div>
+                    <div className="add-product-form-group">
+                        <textarea
+                            name="specification"
+                            value={product.specification}
+                            onChange={(e) => setProduct({ ...product, specification: e.target.value })}
+                            placeholder="Product specification"
+                            rows="2"
+                        />
+                    </div>
+                    <div className="add-product-form-group">
+                        <textarea
+                            name="features"
+                            value={product.features}
+                            onChange={(e) => setProduct({ ...product, features: e.target.value })}
+                            placeholder="Product Features"
+                            rows="3"
+                        />
+                    </div>
+                    <div className="add-product-form-group">
+                        <button type="button" onClick={addProduct}>Add Product</button>
+                    </div>
+                </div>
+                <div className="add-category-section">
+                    <h3>Add New Category</h3>
+                    <input
+                        type="text"
+                        placeholder="New Category"
+                        value={newCategory}
+                        onChange={(e) => setNewCategory(e.target.value)}
+                    />
+                    <button onClick={handleAddCategory}>Add Category</button>
+                </div>
+                <div className="add-subcategory-section">
+                    <h3>Add New Subcategory</h3>
+                    <select
+                        value={selectedCategoryForSub}
+                        onChange={(e) => setSelectedCategoryForSub(e.target.value)}
+                    >
+                        <option value="">Select Category</option>
+                        {Object.keys(categories).map((category) => (
+                            <option key={category} value={category}>
+                                {category}
+                            </option>
+                        ))}
+                    </select>
+                    <input
+                        type="text"
+                        placeholder="New Subcategory"
+                        value={newSubcategory}
+                        onChange={(e) => setNewSubcategory(e.target.value)}
+                    />
+                    <button onClick={handleAddSubcategory}>Add Subcategory</button>
+                </div>
+            </div>
         </div>
-
-        <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <input
-              type="text"
-              name="title"
-              value={product.title}
-              onChange={(e) =>
-                setProduct({ ...product, title: e.target.value })
-              }
-              placeholder="Product Title"
-            />
-          </div>
-        </div>
-
-        <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <input type="file" name="imgurl1" onChange={handleImageUpload} />
-          </div>
-          <div className="add-product-form-group">
-            <input type="file" name="imgurl2" onChange={handleImageUpload} />
-          </div>
-          <div className="add-product-form-group">
-            <input type="file" name="imgurl3" onChange={handleImageUpload} />
-          </div>
-          <div className="add-product-form-group">
-            <input type="file" name="imgurl4" onChange={handleImageUpload} />
-          </div>
-          <div className="add-product-form-group">
-            <input type="file" name="imgurl5" onChange={handleImageUpload} />
-          </div>
-          <div className="add-product-form-group">
-            <input type="file" name="imgurl6" onChange={handleImageUpload} />
-          </div>
-        </div>
-
-        <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <select
-              value={category}
-              onChange={handleCategoryChange}
-              placeholder="Select Category"
-            >
-              <option value="">Select Category</option>
-              {categoryList.map((cat) => (
-                <option key={cat.name} value={cat.name}>
-                  {cat.name}
-                </option>
-              ))}
-            </select>
-            <button
-              className="delete-btn"
-              onClick={() => handleDeleteCategory(category)}
-            >
-              Delete Category
-            </button>
-          </div>
-          <div className="add-product-form-group">
-            <select
-              value={subcategory}
-              onChange={handleSubcategoryChange}
-              placeholder="Select Subcategory"
-            >
-              <option value="">Select Subcategory</option>
-              {category &&
-                categoriesList[category]?.map((sub) => (
-                  <option key={sub} value={sub}>
-                    {sub}
-                  </option>
-                ))}
-            </select>
-            <button
-              className="delete-btn"
-              onClick={() => handleDeleteSubcategory(subcategory)}
-            >
-              Delete Subcategory
-            </button>
-          </div>
-        </div>
-
-        <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <input
-              type="text"
-              name="newCategory"
-              value={newCategory}
-              onChange={(e) => setNewCategory(e.target.value)}
-              placeholder="Add New Category"
-            />
-            <button className="add-btn" onClick={handleAddCategory}>
-              Add Category
-            </button>
-          </div>
-          <div className="add-product-form-group">
-            <input
-              type="text"
-              name="newSubcategory"
-              value={newSubcategory}
-              onChange={(e) => setNewSubcategory(e.target.value)}
-              placeholder="Add New Subcategory"
-            />
-            <button className="add-btn" onClick={handleAddSubcategory}>
-              Add Subcategory
-            </button>
-          </div>
-        </div>
-
-        <div className="add-product-form-row">
-          <div className="add-product-form-group">
-           
-        
-          </div>
-        </div>
-
-        <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <textarea
-              name="description"
-              value={product.description}
-              onChange={(e) =>
-                setProduct({ ...product, description: e.target.value })
-              }
-              placeholder="Product Description"
-              rows="7"
-
-            />
-          </div>
-        </div>
-
-        <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <textarea
-              name="specification"
-              value={product.specification}
-              onChange={(e) =>
-                setProduct({ ...product, specification: e.target.value })
-              }
-              placeholder="Product Specification"
-              rows="7"
-
-            />
-          </div>
-        </div>
-
-        <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <textarea
-              name="features"
-              value={product.features}
-              onChange={(e) =>
-                setProduct({ ...product, features: e.target.value })
-              }
-              placeholder="Product Features"
-              rows="7"
-
-            />
-          </div>
-        </div>
-
-        {/* <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <input
-              type="text"
-              name="price"
-              value={product.price}
-              onChange={(e) => setProduct({ ...product, price: e.target.value })}
-              placeholder="Product Price"
-            />
-          </div>
-          <div className="add-product-form-group">
-            <input
-              type="text"
-              name="salePrice"
-              value={product.salePrice}
-              onChange={(e) =>
-                setProduct({ ...product, salePrice: e.target.value })
-              }
-              placeholder="Sale Price"
-            />
-          </div>
-        </div> */}
-
-        {/* <div className="add-product-form-row">
-          <div className="add-product-form-group">
-            <input
-              type="text"
-              name="stars"
-              value={product.stars}
-              onChange={(e) =>
-                setProduct({ ...product, stars: e.target.value })
-              }
-              placeholder="Product Stars"
-            />
-          </div>
-          <div className="add-product-form-group">
-            <select
-              name="stock"
-              value={product.stock}
-              onChange={(e) =>
-                setProduct({ ...product, stock: e.target.value === "true" })
-              }
-              placeholder="Stock"
-            >
-              <option value={true}>In Stock</option>
-              <option value={false}>Out of Stock</option>
-            </select>
-          </div>
-        </div> */}
-
-        <div className="add-product-form-row">
-          <button
-            className="add-product-submit-btn"
-            onClick={AddProductPageFunction}
-          >
-            Add Product
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default AddProductPage;
