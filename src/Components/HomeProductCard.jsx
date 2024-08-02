@@ -3,7 +3,7 @@ import myContext from "../Context/myContext";
 import { useContext, useEffect } from "react";
 import Loader from "./Loader";
 import { useDispatch, useSelector } from "react-redux";
-import "../Style/HomeProductCard.css";  
+import "../Style/HomeProductCard.css";
 
 const HomeProductCard = () => {
     const navigate = useNavigate();
@@ -12,7 +12,6 @@ const HomeProductCard = () => {
     const cartItems = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
-    
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cartItems));
     }, [cartItems]);
@@ -26,8 +25,8 @@ const HomeProductCard = () => {
                 <div className="home-product-container">
                     <div className="home-product-loader-container">{loading && <Loader />}</div>
                     <div className="home-product-grid">
-                        {getAllProduct.slice(0, 8).map((item, index) => {
-                            const { id, title, price, imgurl1 } = item;
+                        {getAllProduct.filter(item => item.bestSell).slice(0, 8).map((item, index) => {
+                            const { id, title, imgurl1 } = item;
                             return (
                                 <div key={index} className="home-product-card-item">
                                     <div className="home-product-card-content" onClick={() => navigate(`/productinfo/${id}`)}>
@@ -35,9 +34,8 @@ const HomeProductCard = () => {
                                         <div className="home-product-details">
                                             {/* <h2 className="home-product-brand">Laxmo pumps</h2> */}
                                             <h1 className="home-product-title">{title.substring(0, 25)}</h1>
-                                            
                                             <div className="home-product-button-container">
-                                               
+                                                {/* Add any buttons or additional details here if needed */}
                                             </div>
                                         </div>
                                     </div>

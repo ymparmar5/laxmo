@@ -17,6 +17,7 @@ const AddProductPage = () => {
         imgurl3: "",
         imgurl4: "",
         imgurl5: "",
+        bestSell:"",
         category1: "",
         subcategory1: "",
         category2: "",
@@ -43,7 +44,7 @@ const AddProductPage = () => {
         try {
             await addDoc(collection(fireDB, "products"), product);
             toast.success("Product added successfully!");
-            navigate("/AdminDashboard");
+            navigate("/admin");
         } catch (error) {
             console.error("Error adding product: ", error);
             toast.error("Failed to add product.");
@@ -123,6 +124,14 @@ const AddProductPage = () => {
                                 value={product.title}
                                 onChange={(e) => setProduct({ ...product, title: e.target.value })}
                             />
+                            <div>
+                            <select onChange={(e) => setProduct({ ...product, bestSell: e.target.value })} >
+                                <option value="">Best Selling   ? </option>
+                                <option   value={product.bestSell}>true</option>
+                                <option   value={product.bestSell}>false</option>
+                            </select>  
+                            </div>
+                           
                         </div>
                     </div>
                     <div className="add-product-form-row">
