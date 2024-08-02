@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fireDB } from "../../FireBase/FireBaseConfig";
 import toast from "react-hot-toast";
 import myContext from '../../Context/myContext';
-import "../../Style/UpdateProductPage.css";
+import "../../Style/AddProductPage.css";
 import { uploadImage } from '../Admin/Cloudnary'; // Import the Cloudinary upload function
 
 const UpdateProductPage = () => {
@@ -114,24 +114,9 @@ const UpdateProductPage = () => {
                                 />
                             </div>
                         </div>
+                       
                         <div className="update-product-form-row">
-                            <div className="update-product-form-group">
-                                <textarea
-                                    placeholder="Description"
-                                    value={product.description}
-                                    onChange={(e) => setProduct({ ...product, description: e.target.value })}
-                                />
-                            </div>
-                        </div>
-                        <div className="update-product-form-row">
-                            <div className="update-product-form-group">
-                                <input
-                                    type="number"
-                                    placeholder="Price"
-                                    value={product.price}
-                                    onChange={(e) => setProduct({ ...product, price: e.target.value })}
-                                />
-                            </div>
+                          
                         </div>
                         {[1, 2, 3, 4].map((index) => (
                             <div key={index} className="category-select">
@@ -226,8 +211,19 @@ const UpdateProductPage = () => {
                                 value={product.features}
                                 onChange={(e) => setProduct({ ...product, features: e.target.value })}
                                 placeholder="Product Features"
-                                rows="3"
+                                rows="7"
                             />
+                        </div>
+
+                        <div className="update-product-form-row">
+                            <div className="update-product-form-group">
+                                <textarea
+                                    placeholder="Description"
+                                    value={product.description}
+                                    onChange={(e) => setProduct({ ...product, description: e.target.value })}
+                                     rows="7"
+                                />
+                            </div>
                         </div>
                         <div className="update-product-form-group">
                             <button type="button" onClick={updateProduct}>Update Product</button>
