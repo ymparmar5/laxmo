@@ -8,7 +8,7 @@ import "../../Style/AddProductPage.css";
 import { uploadImage } from '../Admin/Cloudnary';
 
 const AddProductPage = () => {
-    const { categories, addNewCategory, addNewSubcategory } = useContext(myContext);
+    const { categories, addNewCategory, deleteCategory, addNewSubcategory, deleteSubcategory } = useContext(myContext);
     const navigate = useNavigate();
     const [product, setProduct] = useState({
         title: "",
@@ -27,12 +27,12 @@ const AddProductPage = () => {
         subcategory4: "",
         description: "",
         specification: "",
-        features:"",
+        features: "",
         time: Timestamp.now(),
         date: new Date().toLocaleString("en-US", {
-          month: "short",
-          day: "2-digit",
-          year: "numeric",
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
         }),
     });
     const [newCategory, setNewCategory] = useState("");
@@ -49,19 +49,19 @@ const AddProductPage = () => {
             toast.error("Failed to add product.");
         }
     };
-    
+
     const handleImageUpload = async (e) => {
         const file = e.target.files[0];
         if (file) {
-          try {
-            const url = await uploadImage(file);
-            setProduct((prevProduct) => ({
-              ...prevProduct,
-              [e.target.name]: url,
-            }));
-          } catch (error) {
-            toast.error('Image upload failed');
-          }
+            try {
+                const url = await uploadImage(file);
+                setProduct((prevProduct) => ({
+                    ...prevProduct,
+                    [e.target.name]: url,
+                }));
+            } catch (error) {
+                toast.error('Image upload failed');
+            }
         }
     };
 
@@ -82,6 +82,14 @@ const AddProductPage = () => {
         }
     };
 
+    const handleDeleteCategory = () => {
+        if (newCategory) {
+            deleteCategory(newCategory);
+            toast.success(`Category "${newCategory}" deleted successfully!`);
+            setNewCategory("");
+        }
+    };
+
     const handleAddSubcategory = () => {
         if (selectedCategoryForSub && newSubcategory) {
             addNewSubcategory(selectedCategoryForSub, newSubcategory);
@@ -91,15 +99,24 @@ const AddProductPage = () => {
         }
     };
 
+    const handleDeleteSubcategory = () => {
+        if (selectedCategoryForSub && newSubcategory) {
+            deleteSubcategory(selectedCategoryForSub, newSubcategory);
+            toast.success(`Subcategory "${newSubcategory}" deleted successfully!`);
+            setNewSubcategory("");
+            setSelectedCategoryForSub("");
+        }
+    };
+
     return (
-        <div className="container">
-            <div className="form-wrapper">
-                <div className="form-header">
+        <div className="add-product-container">
+            <div className="add-product-form-wrapper">
+                <div className="add-product-form-header">
                     <h2>Add Product</h2>
                 </div>
-                <div className="form">
-                    <div className="form-row">
-                        <div className="form-group">
+                <div className="add-product-form">
+                    <div className="add-product-form-row">
+                        <div className="add-product-form-group">
                             <input
                                 type="text"
                                 placeholder="Title"
@@ -108,36 +125,36 @@ const AddProductPage = () => {
                             />
                         </div>
                     </div>
-                    <div className="form-row">
-                        <div className="form-group">
+                    <div className="add-product-form-row">
+                        <div className="add-product-form-group">
                             <input
                                 type="file"
                                 name="imgurl1"
                                 onChange={handleImageUpload}
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="add-product-form-group">
                             <input
                                 type="file"
                                 name="imgurl2"
                                 onChange={handleImageUpload}
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="add-product-form-group">
                             <input
                                 type="file"
                                 name="imgurl3"
                                 onChange={handleImageUpload}
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="add-product-form-group">
                             <input
                                 type="file"
                                 name="imgurl4"
                                 onChange={handleImageUpload}
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="add-product-form-group">
                             <input
                                 type="file"
                                 name="imgurl5"
@@ -145,10 +162,9 @@ const AddProductPage = () => {
                             />
                         </div>
                     </div>
-             
                     {[1, 2, 3, 4].map((index) => (
-                        <div className="form-row">
-                            <div  key={index} className="form-group">
+                        <div key={index} className="add-product-form-row">
+                            <div className="add-product-form-group">
                                 <select
                                     value={product[`category${index}`]}
                                     onChange={(e) => handleCategoryChange(index, e.target.value)}
@@ -161,7 +177,7 @@ const AddProductPage = () => {
                                     ))}
                                 </select>
                             </div>
-                            <div className="form-group">
+                            <div className="add-product-form-group">
                                 <select
                                     value={product[`subcategory${index}`]}
                                     onChange={(e) => handleSubcategoryChange(index, e.target.value)}
@@ -178,9 +194,8 @@ const AddProductPage = () => {
                             </div>
                         </div>
                     ))}
-                   
-                    <div className="form-row">
-                        <div className="form-group">
+                    <div className="add-product-form-row">
+                        <div className="add-product-form-group">
                             <textarea
                                 placeholder="Features"
                                 value={product.features}
@@ -189,19 +204,18 @@ const AddProductPage = () => {
                             />
                         </div>
                     </div>
-                    <div className="form-row">
-                        <div className="form-group">
+                    <div className="add-product-form-row">
+                        <div className="add-product-form-group">
                             <textarea
                                 placeholder="Specification"
                                 value={product.specification}
                                 onChange={(e) => setProduct({ ...product, specification: e.target.value })}
                                 rows={7}
-
                             />
                         </div>
                     </div>
-                    <div className="form-row">
-                        <div className="form-group">
+                    <div className="add-product-form-row">
+                        <div className="add-product-form-group">
                             <textarea
                                 placeholder="Description"
                                 value={product.description}
@@ -210,25 +224,23 @@ const AddProductPage = () => {
                             />
                         </div>
                     </div>
-                 
-                    <button className="btn submit-btn" onClick={addProduct}>
+                    <button className="add-product-btn add-product-submit-btn" onClick={addProduct}>
                         Add Product
                     </button>
                 </div>
-
-                <div className="add-category-section">
+                <div className="add-product-add-category-section">
                     <input
                         type="text"
                         placeholder="New Category Name"
                         value={newCategory}
                         onChange={(e) => setNewCategory(e.target.value)}
                     />
-                    <button className="btn add-btn" onClick={handleAddCategory}>
+                    <button className="add-product-add-btn" onClick={handleAddCategory}>
                         Add Category
                     </button>
+                  
                 </div>
-
-                <div className="add-subcategory-section">
+                <div className="add-product-add-subcategory-section">
                     <select
                         value={selectedCategoryForSub}
                         onChange={(e) => setSelectedCategoryForSub(e.target.value)}
@@ -246,9 +258,10 @@ const AddProductPage = () => {
                         value={newSubcategory}
                         onChange={(e) => setNewSubcategory(e.target.value)}
                     />
-                    <button className="btn add-btn" onClick={handleAddSubcategory}>
+                    <button className="add-product-add-btn" onClick={handleAddSubcategory}>
                         Add Subcategory
                     </button>
+                   
                 </div>
             </div>
         </div>

@@ -17,9 +17,27 @@ export const uploadImage = async (file) => {
       }
     );
     const data = await response.json();
-    return data.secure_url;
+   
+    if (data.secure_url) {
+      const transformedUrl = cloudinaryCore.url(data.public_id, {
+        transformation: [
+          { width: 800, crop: "limit" }, // Resize to fit within 800px width
+          { fetch_format: "auto" }, // Convert to optimal format
+          { quality: "auto" } // Adjust quality for optimal file size
+        ]
+      });
+      return transformedUrl;
+    } else {
+      throw new Error('Failed to upload image');
+    }
   } catch (error) {
     console.error('Error uploading image to Cloudinary:', error);
     throw error;
   }
 };
+
+
+
+  
+ 
+

@@ -98,14 +98,14 @@ const UpdateProductPage = () => {
 
     return (
         product && (
-            <div className="update-product-container">
-                <div className="update-product-form-wrapper">
-                    <div className="form-header">
+            <div className="add-product-container">
+                <div className="add-product-form-wrapper">
+                    <div className="add-product-form-header">
                         <h2>Update Product</h2>
                     </div>
-                    <div className="update-product-form">
-                        <div className="update-product-form-row">
-                            <div className="update-product-form-group">
+                    <div className="add-product-form">
+                        <div className="add-product-form-row">
+                            <div className="add-product-form-group">
                                 <input
                                     type="text"
                                     placeholder="Title"
@@ -114,13 +114,46 @@ const UpdateProductPage = () => {
                                 />
                             </div>
                         </div>
-                       
-                        <div className="update-product-form-row">
-                          
+                        <div className="add-product-form-row">
+                            <div className="add-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl1"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
+                            <div className="add-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl2"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
+                            <div className="add-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl3"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
+                            <div className="add-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl4"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
+                            <div className="add-product-form-group">
+                                <input
+                                    type="file"
+                                    name="imgurl5"
+                                    onChange={handleImageUpload}
+                                />
+                            </div>
                         </div>
                         {[1, 2, 3, 4].map((index) => (
-                            <div key={index} className="category-select">
-                                <div className="update-product-form-group">
+                            <div key={index} className="add-product-form-row">
+                                <div className="add-product-form-group">
                                     <select
                                         value={product[`category${index}`]}
                                         onChange={(e) => handleCategoryChange(index, e.target.value)}
@@ -133,7 +166,7 @@ const UpdateProductPage = () => {
                                         ))}
                                     </select>
                                 </div>
-                                <div className="update-product-form-group">
+                                <div className="add-product-form-group">
                                     <select
                                         value={product[`subcategory${index}`]}
                                         onChange={(e) => handleSubcategoryChange(index, e.target.value)}
@@ -150,97 +183,52 @@ const UpdateProductPage = () => {
                                 </div>
                             </div>
                         ))}
-                        <div className="update-product-form-row">
-                            <div className="update-product-form-group">
-                                <input
-                                    type="file"
-                                    name="imgurl1"
-                                    onChange={handleImageUpload}
-                                />
-                            </div>
-                            <div className="update-product-form-group">
-                                <input
-                                    type="file"
-                                    name="imgurl2"
-                                    onChange={handleImageUpload}
-                                />
-                            </div>
-                            <div className="update-product-form-group">
-                                <input
-                                    type="file"
-                                    name="imgurl3"
-                                    onChange={handleImageUpload}
+                        <div className="add-product-form-row">
+                            <div className="add-product-form-group">
+                                <textarea
+                                    placeholder="Features"
+                                    value={product.features}
+                                    onChange={(e) => setProduct({ ...product, features: e.target.value })}
+                                    rows={7}
                                 />
                             </div>
                         </div>
-                        <div className="update-product-form-row">
-                            <div className="update-product-form-group">
-                                <input
-                                    type="file"
-                                    name="imgurl4"
-                                    onChange={handleImageUpload}
-                                />
-                            </div>
-                            <div className="update-product-form-group">
-                                <input
-                                    type="file"
-                                    name="imgurl5"
-                                    onChange={handleImageUpload}
-                                />
-                            </div>
-                            <div className="update-product-form-group">
-                                <input
-                                    type="file"
-                                    name="imgurl6"
-                                    onChange={handleImageUpload}
+                        <div className="add-product-form-row">
+                            <div className="add-product-form-group">
+                                <textarea
+                                    placeholder="Specification"
+                                    value={product.specification}
+                                    onChange={(e) => setProduct({ ...product, specification: e.target.value })}
+                                    rows={7}
                                 />
                             </div>
                         </div>
-                        <div className="update-product-form-group">
-                            <textarea
-                                name="specification"
-                                value={product.specification}
-                                onChange={(e) => setProduct({ ...product, specification: e.target.value })}
-                                placeholder="Product specification"
-                                rows="2"
-                            />
-                        </div>
-                        <div className="update-product-form-group">
-                            <textarea
-                                name="features"
-                                value={product.features}
-                                onChange={(e) => setProduct({ ...product, features: e.target.value })}
-                                placeholder="Product Features"
-                                rows="7"
-                            />
-                        </div>
-
-                        <div className="update-product-form-row">
-                            <div className="update-product-form-group">
+                        <div className="add-product-form-row">
+                            <div className="add-product-form-group">
                                 <textarea
                                     placeholder="Description"
                                     value={product.description}
                                     onChange={(e) => setProduct({ ...product, description: e.target.value })}
-                                     rows="7"
+                                    rows={7}
                                 />
                             </div>
                         </div>
-                        <div className="update-product-form-group">
-                            <button type="button" onClick={updateProduct}>Update Product</button>
-                        </div>
+                        <button className="add-product-btn add-product-submit-btn" onClick={updateProduct}>
+                            Update Product
+                        </button>
                     </div>
-                    <div className="add-category-section">
-                        <h3>Add New Category</h3>
+                    <div className="add-product-add-category-section">
                         <input
                             type="text"
-                            placeholder="New Category"
+                            placeholder="New Category Name"
                             value={newCategory}
                             onChange={(e) => setNewCategory(e.target.value)}
                         />
-                        <button onClick={handleAddCategory}>Add Category</button>
+                        <button className="add-product-add-btn" onClick={handleAddCategory}>
+                            Add Category
+                        </button>
                     </div>
-                    <div className="add-subcategory-section">
-                        <h3>Add New Subcategory</h3>
+                    <div className="add-product-add-subcategory-section">
                         <select
                             value={selectedCategoryForSub}
                             onChange={(e) => setSelectedCategoryForSub(e.target.value)}
@@ -254,11 +242,13 @@ const UpdateProductPage = () => {
                         </select>
                         <input
                             type="text"
-                            placeholder="New Subcategory"
+                            placeholder="New Subcategory Name"
                             value={newSubcategory}
                             onChange={(e) => setNewSubcategory(e.target.value)}
                         />
-                        <button onClick={handleAddSubcategory}>Add Subcategory</button>
+                        <button className="add-product-add-btn" onClick={handleAddSubcategory}>
+                            Add Subcategory
+                        </button>
                     </div>
                 </div>
             </div>
