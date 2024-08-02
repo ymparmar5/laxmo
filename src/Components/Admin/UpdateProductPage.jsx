@@ -48,7 +48,8 @@ const UpdateProductPage = () => {
                 }),
             });
             toast.success("Product updated successfully!");
-            navigate("/AdminDashboard");
+            navigate("/admin");
+
         } catch (error) {
             console.error("Error updating product: ", error);
             toast.error("Failed to update product.");
@@ -113,11 +114,11 @@ const UpdateProductPage = () => {
                                     onChange={(e) => setProduct({ ...product, title: e.target.value })}
                                 />
                                  <div>
-                            <select onChange={(e) => setProduct({ ...product, bestSell: e.target.value })} >
-                                <option value="">Best Selling</option>
-                                <option   value={product.bestSell}>true</option>
-                                <option   value={product.bestSell}>false</option>
-                            </select>  
+                                 <select onChange={(e) => setProduct({ ...product, bestSell: e.target.value })} value={product.bestSell}>
+        <option value="">Best Selling?</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
                             </div>
                             </div>
                         </div>
@@ -264,3 +265,4 @@ const UpdateProductPage = () => {
 };
 
 export default UpdateProductPage;
+

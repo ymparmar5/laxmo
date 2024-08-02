@@ -125,11 +125,15 @@ const AddProductPage = () => {
                                 onChange={(e) => setProduct({ ...product, title: e.target.value })}
                             />
                             <div>
-                            <select onChange={(e) => setProduct({ ...product, bestSell: e.target.value })} >
-                                <option value="">Best Selling   ? </option>
-                                <option   value={product.bestSell}>true</option>
-                                <option   value={product.bestSell}>false</option>
-                            </select>  
+                            <select onChange={(e) => setProduct({ ...product, bestSell: e.target.value })} value={product.bestSell}>
+        <option value="">Best Selling?</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+                            <div>
+   
+</div>
+
                             </div>
                            
                         </div>
@@ -278,3 +282,4 @@ const AddProductPage = () => {
 };
 
 export default AddProductPage;
+

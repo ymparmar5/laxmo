@@ -89,23 +89,28 @@ const ProductInfo = () => {
                     <h2 className="description-title">Specification:</h2>
                     <ul>
                       {product.specification
-                        .split("\n")
-                        .map((specification, index) => (
-                          <li key={index}>{specification}</li>
-                        ))}
+                        ? product.specification
+                            .split("\n")
+                            .map((specification, index) => (
+                              <li key={index}>{specification}</li>
+                            ))
+                        : "No specifications available"}
                     </ul>
                   </div>
                   <div className="product-description">
                     <h2 className="description-title">Features:</h2>
                     <ul>
-                      {product.features.split("\n").map((feature, index) => (
-                        <li key={index}>{feature}</li>
-                      ))}
+                      {product.features
+                        ? product.features
+                            .split("\n")
+                            .map((feature, index) => (
+                              <li key={index}>{feature}</li>
+                            ))
+                        : "No features available"}
                     </ul>
                   </div>
                 </div>
               </div>
-              
             </div>
           </>
         ) : (
@@ -117,16 +122,19 @@ const ProductInfo = () => {
           <div className="product-description full-width">
             <h2 className="description-title">Description:</h2>
             <ul>
-              {product.description.split("\n").map((description, index) => (
-                <li key={index}>{description}</li>
-              ))}
+              {product.description
+                ? product.description
+                    .split("\n")
+                    .map((description, index) => (
+                      <li key={index}>{description}</li>
+                    ))
+                : "No description available"}
             </ul>
           </div>
         ) : (
           <p>Description not found</p>
         )}
       </div>
-      
     </section>
   );
 };
