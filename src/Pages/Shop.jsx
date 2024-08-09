@@ -14,7 +14,7 @@ const Shop = () => {
     const [sortOption, setSortOption] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedSubcategory, setSelectedSubcategory] = useState('');
-    const productsPerPage = 12;
+    const productsPerPage = 16;
 
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);

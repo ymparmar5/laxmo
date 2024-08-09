@@ -121,8 +121,9 @@
 .shop-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
+    gap: 2rem;
 }
 
 .shop-card {
