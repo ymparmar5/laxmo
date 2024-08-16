@@ -63,8 +63,10 @@ const Category = () => {
     };
 
     const handleCategoryClick = (name) => {
-        navigate(`/shop?category=${name}`);
+        const encodedName = encodeURIComponent(name);
+        navigate(`/shop?category=${encodedName}`);
     };
+    
 
     return (
         <>
