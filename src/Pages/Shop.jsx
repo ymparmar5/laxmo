@@ -28,6 +28,7 @@ const Shop = () => {
         setSortOption(e.target.value);
     };
 
+    
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
         setSelectedSubcategory('');

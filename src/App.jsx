@@ -4,7 +4,7 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Shop from "./Pages/Shop";
-import CategoryPage from "./Pages/CategoryPage";
+// import CategoryPage from "./Pages/CategoryPage";
 import Error from "./Pages/Error";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
@@ -38,7 +38,7 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/productinfo/:id" element={<ProductInfo />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/category/:categoryname" element={<CategoryPage />} /> 
+          {/* <Route path="/category/:categoryname" element={<CategoryPage />} />  */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/sign-up" element={<Signup />} />
