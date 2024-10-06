@@ -53,7 +53,7 @@ const HeroSection = () => {
       </div>
 
       <br />
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'center ', height:'0px' }}>
         {slides.map((_, index) => (
           <span
             key={index}
