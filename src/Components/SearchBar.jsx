@@ -31,11 +31,11 @@ const SearchBar = () => {
                             <div
                                 key={index}
                                 className="dropdown-item"
-                                onClick={() => navigate(`/productinfo/${item.id}`)}
+                                onClick={() => navigate(`/productinfo/${item.id}`, setSearch(""))}
                             >
                                 <div className="item-content">
                                     <img className="item-image" src={item.imgurl1} alt="" />
-                                    {item.title.slice(0,28)}
+                                    {item.title.slice(0, 28)}
                                 </div>
                             </div>
                         ))
